@@ -13,7 +13,7 @@ const AppRouter = () => (
       <MyNavbar />
       <Switch>
         <Route path="/" exact={true} component={Dashboard} />
-        <Route path="/recipes/" component={RecipeList} />
+        <Route path="/recipes" component={RecipeList} />
         <Route
           path="/recipes/recipe/:id?"
           exact={true}

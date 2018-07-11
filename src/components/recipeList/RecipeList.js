@@ -1,14 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import RecipeCard from '../recipeCard/RecipeCard';
+import { Container, Row } from 'reactstrap';
 
 const RecipeList = props => {
   return (
-    <div>
-      <h1>this is recipeList</h1>
-      {props.recipes.map(recipe => {
-        return <h4 key={recipe.id}>{recipe.title}</h4>;
-      })}
-    </div>
+    <Container>
+      <Row className="justify-content-center">
+        <div className="col-md-8">
+          <h1>this is recipeList</h1>
+          {props.recipes.map(recipe => {
+            return <RecipeCard key={recipe.id} {...recipe} />;
+          })}
+        </div>
+      </Row>
+    </Container>
   );
 };
 
