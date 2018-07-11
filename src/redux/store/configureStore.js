@@ -1,20 +1,18 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from '../reducers/rootReducer';
 
-import expensesReducer from '../reducers/expenses';
-import filtersReducer from '../reducers/filters';
+const initState = {};
+const middleware = [thunk];
 
-// we call combine reducers from the store instead of one reducer so we can pass inside it multiple reducers
-// combine reducer first takes an object and in it key/value pairs
-// the key will be the root state name ( expenses , filters )
-// the value will be the reducer that is going to manage that state
+const store = createStore(
+  rootReducer,
+  initState,
+  compose(
+    applyMiddleware(...middleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+);
 
-// put the create store on a function so we can call it later
-export default () => {
-  const store = createStore(
-    combineReducers({
-      expenses: expensesReducer,
-      filters: filtersReducer
-    })
-  );
-  return store;
-};
+console.log(store.getState());
+export default store;

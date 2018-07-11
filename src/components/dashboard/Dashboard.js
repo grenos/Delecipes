@@ -1,16 +1,17 @@
-import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
 
-//import { connect } from 'react-redux';
+//! global css
+import 'normalize.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-//import { searchRecipes } from '../../redux/actions/getRecipesActions';
-
-import { Jumbotron, Container, Row } from 'reactstrap';
-
+//! import components
+import { Container, Row } from 'reactstrap';
 import Header from './Header';
 import Search from './Search';
-import MyNavbar from '../navbar/MyNavbar';
+import { searchRecipes } from '../../redux/actions/actions';
 
+//! component style
 import styled from 'styled-components';
 
 const Main = styled.div`
@@ -36,117 +37,31 @@ const InputBox = styled.div`
   align-items: center;
 `;
 
-class Dashboard extends Component {
-  // constructor(props) {
-  //   super(props);
+const Dashboard = props => {
+  return (
+    <div>
+      <Main className="jumbotron jumbotron-fluid">
+        <Container fluid>
+          <Row>
+            <TextBox className="col-md-6">
+              <Header />
+            </TextBox>
+            <InputBox className="col-md-6">
+              <Search
+                onSubmit={recipeData => {
+                  console.log(recipeData);
+                  props.searchRecipes(recipeData);
+                }}
+              />
+            </InputBox>
+          </Row>
+        </Container>
+      </Main>
+    </div>
+  );
+};
 
-  //   // this.state = {
-  //   //   recipeInput: '',
-  //   //   recipeStyle: '',
-  //   //   recipes: [],
-  //   //   recipe: {}
-  //   // };
-  // }
-
-  // getInputData = inputData => {
-  //   this.setState({
-  //     recipeInput: inputData
-  //   });
-  // };
-
-  // getSelectData = selectData => {
-  //   this.setState({
-  //     recipeStyle: selectData
-  //   });
-  // };
-
-  //! get values (object) from serach component to dispatch
-  //submitForm = recipeData => {
-  //searchRecipes(recipeData);
-  //props.dispatch(searchRecipes(recipeData));
-  //props.history.push('/');
-  // this.searchRecipes();
-  //};
-
-  //searchRecipes = () => {
-  //console.log(process.env.REACT_APP_RECIPE_API_KEY);
-  // axios
-  //   .get(
-  //     `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${
-  //       this.state.recipeStyle
-  //     }&instructionsRequired=true&limitLicense=false&number=30&offset=0&query=${
-  //       this.state.recipeInput
-  //     }`,
-  //     {
-  //       headers: {
-  //         'X-Mashape-Key': process.env.REACT_APP_RECIPE_API_KEY,
-  //         Accept: 'application/json'
-  //       }
-  //     }
-  //   )
-  //   .then(res => {
-  //     this.setState({ recipes: res.data.results });
-  //     console.log(res);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-  //};
-
-  render() {
-    return (
-      <div>
-        <MyNavbar />
-        <Main className="jumbotron jumbotron-fluid">
-          <Container fluid>
-            <Row>
-              <TextBox className="col-md-6">
-                <Header />
-              </TextBox>
-              <InputBox className="col-md-6">
-                <Search submitForm={this.submitForm} />
-              </InputBox>
-            </Row>
-          </Container>
-        </Main>
-      </div>
-    );
-  }
-}
-
-export default Dashboard;
-
-//Jumbotron.propTypes = {};
-
-// const mapStateToProps = state => {
-//   return state;
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   searchRecipes
-// )(Dashboard);
-
-// id
-// :
-// 569765
-// image
-// :
-// "Cheeseburger-Pizza-569765.jpg"
-// imageUrls
-// :
-// ["Cheeseburger-Pizza-569765.jpg"]
-// readyInMinutes
-// :
-// 45
-// servings
-// :
-// 6
-// title
-// :
-// "Cheeseburger Pizza"
-
-{
-  /* getInputData={this.getInputData}
-                  getSelectData={this.getSelectData} */
-}
+export default connect(
+  null,
+  { searchRecipes }
+)(Dashboard);

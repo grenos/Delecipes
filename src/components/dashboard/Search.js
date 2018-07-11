@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Router } from 'react-router-dom';
 import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
 
 import { withRouter } from 'react-router-dom';
@@ -30,9 +29,7 @@ class Search extends Component {
 
     this.state = {
       recipeInput: '',
-      recipeStyle: '',
-      recipes: [],
-      recipe: {}
+      recipeStyle: ''
     };
   }
 
@@ -53,7 +50,7 @@ class Search extends Component {
   //! Sent values to parent for dispatch to store
   onSubmit = e => {
     e.preventDefault();
-    this.props.submitForm({
+    this.props.onSubmit({
       recipeInput: this.state.recipeInput,
       recipeStyle: this.state.recipeStyle
     });
@@ -113,5 +110,3 @@ class Search extends Component {
 }
 
 export default withRouter(Search);
-
-//
