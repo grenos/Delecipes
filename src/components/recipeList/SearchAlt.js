@@ -6,22 +6,19 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FormCard = styled.div`
+  border: 1px solid #eeeeee;
   border-radius: 0.25em;
-  width: 60vw;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  padding: 2em;
-  background: rgba(0, 0, 0, 0.7);
+  background: transparent;
+  margin-bottom: 1em;
 `;
 
-const SmallTitle = styled.h4`
-  color: white;
-  font-size: 2vw;
-  margin-bottom: 1em;
-  font-weight: 300;
-`;
+let formStyle = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'center',
+  marginTop: '1em'
+};
 
 class Search extends Component {
   constructor(props) {
@@ -37,14 +34,12 @@ class Search extends Component {
   recipeInputData = e => {
     const inputData = e.target.value;
     this.setState({ recipeInput: inputData });
-    //this.props.getInputData(inputData);
   };
 
   //! set select value to component state
   recipeStyleData = e => {
     const selectData = e.target.value;
     this.setState({ recipeStyle: selectData });
-    //this.props.getSelectData(selectData);
   };
 
   //! Sent values to parent for dispatch to store
@@ -61,12 +56,8 @@ class Search extends Component {
   render() {
     return (
       <FormCard>
-        <Form onSubmit={this.onSubmit}>
-          <SmallTitle>Find the Best Recipes in the world</SmallTitle>
-          <FormGroup>
-            <Label for="search-recipe" style={{ color: '#bdbdbd' }}>
-              Search for Recipes
-            </Label>
+        <Form style={formStyle} onSubmit={this.onSubmit}>
+          <FormGroup style={{ marginRight: '1em' }}>
             <Input
               type="text"
               name="search"
@@ -74,10 +65,7 @@ class Search extends Component {
               onChange={this.recipeInputData}
             />
           </FormGroup>
-          <FormGroup>
-            <Label for="exampleSelect" style={{ color: '#bdbdbd' }}>
-              Choose Cousine Style
-            </Label>
+          <FormGroup style={{ marginRight: '1em' }}>
             <Input
               type="select"
               name="select"
@@ -99,7 +87,7 @@ class Search extends Component {
               <option value="latin american">Latin American</option>
             </Input>
           </FormGroup>
-          <FormGroup>
+          <FormGroup style={{ marginRight: '1em' }}>
             <Button color="success" type="submit">
               Search
             </Button>

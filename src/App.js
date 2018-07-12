@@ -5,10 +5,7 @@ import AppRouter from './components/routers/AppRouter';
 
 import store from './redux/store/configureStore';
 
-// we call the default function from the imported configureStore file (we named configure store on the import above) to gewt access to getState() subscribe() etc
-//const store = configureStore();
-// log the current state
-//console.log(store.getState());
+import '../src/global_styles.css';
 
 // get reactive (live) updates of our state
 store.subscribe(() => {

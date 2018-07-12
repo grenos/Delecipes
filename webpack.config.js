@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+const myEnv = require('dotenv').config();
 const path = require('path');
 
 module.exports = {
@@ -23,5 +25,10 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true // tells server we use client router and should always serve index.html
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      API_KEY: JSON.stringify(myEnv.parsed.API_KEY)
+    })
+  ]
 };

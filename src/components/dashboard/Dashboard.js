@@ -9,7 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row } from 'reactstrap';
 import Header from './Header';
 import Search from './Search';
-import { searchRecipes } from '../../redux/actions/actions';
+
+import { searchRecipes, recipeSum } from '../../redux/actions/actions';
 
 //! component style
 import styled from 'styled-components';
@@ -49,7 +50,6 @@ const Dashboard = props => {
             <InputBox className="col-md-6">
               <Search
                 onSubmit={recipeData => {
-                  console.log(recipeData);
                   props.searchRecipes(recipeData);
                 }}
               />

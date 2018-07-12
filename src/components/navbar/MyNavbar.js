@@ -32,7 +32,7 @@ class MyNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="transparent" fixed="top" dark expand="sm">
+        <Navbar color="dark" fixed="top" dark expand="sm">
           <NavbarBrand>Recipes Logo</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.isOpen} navbar>

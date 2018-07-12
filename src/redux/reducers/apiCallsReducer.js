@@ -2,7 +2,8 @@ import { RECIPES_CALL } from '../actions/actionTypes';
 
 const defaultState = {
   recipes: [],
-  recipe: {}
+  recipe: {},
+  searchData: ''
 };
 
 const ApiReducer = (state = defaultState, action) => {
@@ -10,7 +11,8 @@ const ApiReducer = (state = defaultState, action) => {
     case RECIPES_CALL:
       return {
         ...state,
-        recipes: action.payload
+        recipes: action.payload,
+        searchData: action.payloadInfo
       };
     default:
       return state;
