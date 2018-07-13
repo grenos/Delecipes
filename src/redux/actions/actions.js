@@ -1,4 +1,4 @@
-import { RECIPES_CALL } from './actionTypes';
+import { RECIPES_CALL, INPUT_DATA } from './actionTypes';
 import axios from 'axios';
 
 export const searchRecipes = ({ recipeInput, recipeStyle }) => dispatch => {
@@ -25,3 +25,8 @@ export const searchRecipes = ({ recipeInput, recipeStyle }) => dispatch => {
       console.log(err);
     });
 };
+
+export const recipeInput = ({ recipeInput }) => ({
+  type: INPUT_DATA,
+  recipeInput
+});

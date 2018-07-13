@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Alegreya:400,400i');
 
 
-h1,h2,h3,h4,h5{
+h1,h2,h3,h4,h5,a{
   font-family: 'Nunito', sans-serif;
 }
 
-a, p{
+p{
   font-family: 'Alegreya', serif;
 }

@@ -33,7 +33,9 @@ class MyNavbar extends Component {
     return (
       <div>
         <Navbar color="dark" fixed="top" dark expand="sm">
-          <NavbarBrand>Recipes Logo</NavbarBrand>
+          <Link to="/">
+            <NavbarBrand>Recipes Logo</NavbarBrand>
+          </Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.isOpen} navbar>
             <Nav className="ml-auto" navbar>

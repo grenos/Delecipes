@@ -1,6 +1,10 @@
 import React from 'react';
+
+//! Reactstrap
 import { Link } from 'react-router-dom';
 import { Media } from 'reactstrap';
+
+//! fontawesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookSquare,
@@ -8,14 +12,16 @@ import {
   faGooglePlusSquare
 } from '@fortawesome/free-brands-svg-icons';
 
-import './style.css';
-
 //! component style
+import './style.css';
 import styled from 'styled-components';
 
 let cardContainer = {
   marginTop: '1em',
-  borderBottom: '1px solid #eeeeee'
+  background: 'white',
+  padding: '1em 1em 0 1em',
+  borderRadius: '.25em',
+  boxShadow: '1px 1px 10px #757575'
 };
 
 let imgContainerStyle = {
@@ -23,7 +29,6 @@ let imgContainerStyle = {
   width: '120px',
   overflow: 'hidden',
   marginRight: '2em',
-  boxShadow: '2px 2px 2px #eeeeee',
   paddingBottom: '2em',
   marginBottom: '1em',
   borderRadius: '.25em'
@@ -74,27 +79,32 @@ const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
             <Image
               className="img-fluid"
               object
-              src="/dashboard-bg.jpg"
-              alt="Recipe Image"
+              src={`https://spoonacular.com/recipeImages/${image}`}
               alt="Recipe Image"
             />
           </Link>
         </Media>
 
         <Media body style={{ display: 'flex', flexDirection: 'column' }}>
-          <Media heading>fake placeholder title here{title}</Media>
+          <Link to={`/recipes/recipe/${id}`}>
+            <Media heading style={{ fontWeight: '600', color: '#212121' }}>
+              {title}
+            </Media>
+          </Link>
           <div style={flexStyle1}>
             <p style={{ marginRight: '1em' }}>
-              Ready in 33<span style={spanStyle}>{readyInMinutes}</span> min.
+              Ready in <span style={spanStyle}>{readyInMinutes}</span> min.
             </p>
             <p style={{ marginRight: '1em' }}>
-              Serves 3<span style={spanStyle}>{servings}</span> people
+              Serves <span style={spanStyle}>{servings}</span> people
             </p>
           </div>
           <div style={flexStyle2}>
-            <button className="btn btn-outline-success btn-sm">
-              Go to Recipe
-            </button>
+            <Link to={`/recipes/recipe/${id}`}>
+              <button className="btn btn-outline-success btn-sm">
+                Go to Recipe
+              </button>
+            </Link>
             <Social>
               <FontAwesomeIcon icon={faFacebookSquare} style={iconStyle} />
               <FontAwesomeIcon icon={faTwitterSquare} style={iconStyle} />

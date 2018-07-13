@@ -10,7 +10,9 @@ import { Container, Row } from 'reactstrap';
 import Header from './Header';
 import Search from './Search';
 
-import { searchRecipes, recipeSum } from '../../redux/actions/actions';
+//! redux components
+import { searchRecipes, recipeInput } from '../../redux/actions/actions';
+import store from '../../redux/store/configureStore';
 
 //! component style
 import styled from 'styled-components';
@@ -51,6 +53,7 @@ const Dashboard = props => {
               <Search
                 onSubmit={recipeData => {
                   props.searchRecipes(recipeData);
+                  store.dispatch(recipeInput(recipeData));
                 }}
               />
             </InputBox>
@@ -63,5 +66,5 @@ const Dashboard = props => {
 
 export default connect(
   null,
-  { searchRecipes }
+  { searchRecipes, recipeInput }
 )(Dashboard);

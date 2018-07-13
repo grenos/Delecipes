@@ -6,10 +6,11 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FormCard = styled.div`
-  border: 1px solid #eeeeee;
+  border: 1px solid white;
   border-radius: 0.25em;
   justify-content: center;
-  background: transparent;
+  background: url('/dashboard-bg.jpg') no-repeat center center;
+  background-size: cover;
   margin-bottom: 1em;
 `;
 
@@ -49,7 +50,6 @@ class Search extends Component {
       recipeInput: this.state.recipeInput,
       recipeStyle: this.state.recipeStyle
     });
-
     this.props.history.push(`/recipes/${this.state.recipeInput}`);
   };
 
