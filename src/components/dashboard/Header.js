@@ -4,19 +4,20 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const BigTitle = styled.h1`
-  margin-top: 0.2em;
   color: white;
   font-size: 13vw;
-  line-height: 0.79em;
+  line-height: 0.75em;
+  letter-spacing: 0;
 `;
 
 const SpanText1 = styled.span`
   font-size: 6vw;
-  line-height: 0.79em;
+  line-height: 0.75em;
 `;
 
 const SpanText2 = styled.span`
   color: #259a35;
+  font-size: 15vw;
 `;
 
 export default () => {

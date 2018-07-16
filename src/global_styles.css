@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600');
 @import url('https://fonts.googleapis.com/css?family=Alegreya:400,400i');
 
+body{
+  background: #eeeeee;
+}
 
 h1,h2,h3,h4,h5,a{
   font-family: 'Nunito', sans-serif;
@@ -8,4 +11,9 @@ h1,h2,h3,h4,h5,a{
 
 p{
   font-family: 'Alegreya', serif;
+}
+
+a:hover{
+  color: #212121;
+  text-decoration: none;
 }

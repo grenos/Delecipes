@@ -71,11 +71,13 @@ let spanStyle = {
 };
 
 const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
+  //
+
   return (
     <div>
       <Media style={cardContainer}>
         <Media left style={imgContainerStyle}>
-          <Link to={`/recipes/recipe/${id}`}>
+          <Link to={`/recipes/recipe/${id}/${title}`}>
             <Image
               className="img-fluid"
               object
@@ -86,8 +88,12 @@ const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
         </Media>
 
         <Media body style={{ display: 'flex', flexDirection: 'column' }}>
-          <Link to={`/recipes/recipe/${id}`}>
-            <Media heading style={{ fontWeight: '600', color: '#212121' }}>
+          <Link to={`/recipes/recipe/${id}/${title}`}>
+            <Media
+              heading
+              className="title"
+              style={{ fontWeight: '600', color: '#212121' }}
+            >
               {title}
             </Media>
           </Link>
@@ -100,8 +106,8 @@ const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
             </p>
           </div>
           <div style={flexStyle2}>
-            <Link to={`/recipes/recipe/${id}`}>
-              <button className="btn btn-outline-success btn-sm">
+            <Link to={`/recipes/recipe/${id}/${title}`}>
+              <button className="btn btn-success btn-sm buttonStyle">
                 Go to Recipe
               </button>
             </Link>

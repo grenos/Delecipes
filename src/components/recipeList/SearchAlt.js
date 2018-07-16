@@ -6,12 +6,13 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FormCard = styled.div`
-  border: 1px solid white;
+  border: 1px solid #eeeeee;
   border-radius: 0.25em;
   justify-content: center;
   background: url('/dashboard-bg.jpg') no-repeat center center;
   background-size: cover;
-  margin-bottom: 1em;
+  margin: 1.5em 0 1.5em 0;
+  padding .7em 0;
 `;
 
 let formStyle = {
@@ -21,7 +22,7 @@ let formStyle = {
   marginTop: '1em'
 };
 
-class Search extends Component {
+class SearchAlt extends Component {
   constructor(props) {
     super(props);
 
@@ -98,4 +99,4 @@ class Search extends Component {
   }
 }
 
-export default withRouter(Search);
+export default withRouter(SearchAlt);

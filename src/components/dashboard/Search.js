@@ -37,14 +37,12 @@ class Search extends Component {
   recipeInputData = e => {
     const inputData = e.target.value;
     this.setState({ recipeInput: inputData });
-    //this.props.getInputData(inputData);
   };
 
   //! set select value to component state
   recipeStyleData = e => {
     const selectData = e.target.value;
     this.setState({ recipeStyle: selectData });
-    //this.props.getSelectData(selectData);
   };
 
   //! Sent values to parent for dispatch to store
@@ -72,6 +70,7 @@ class Search extends Component {
               name="search"
               placeholder="I want to make..."
               onChange={this.recipeInputData}
+              autoFocus
             />
           </FormGroup>
           <FormGroup>

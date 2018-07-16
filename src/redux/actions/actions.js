@@ -4,7 +4,7 @@ import axios from 'axios';
 export const searchRecipes = ({ recipeInput, recipeStyle }) => dispatch => {
   axios
     .get(
-      `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${recipeStyle}&instructionsRequired=true&limitLicense=false&number=30&offset=0&query=${recipeInput}`,
+      `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${recipeStyle}&instructionsRequired=true&limitLicense=false&number=10&offset=0&query=${recipeInput}`,
       {
         headers: {
           'X-Mashape-Key': API_KEY,
