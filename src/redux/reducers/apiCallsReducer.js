@@ -4,7 +4,8 @@ const defaultState = {
   recipes: [],
   recipe: {},
   searchData: '',
-  recipeInput: ''
+  recipeInput: '',
+  recipeStyle: ''
 };
 
 const ApiReducer = (state = defaultState, action) => {
@@ -12,7 +13,8 @@ const ApiReducer = (state = defaultState, action) => {
     case INPUT_DATA:
       return {
         ...state,
-        recipeInput: action.recipeInput
+        recipeInput: action.recipeInput,
+        recipeStyle: action.recipeStyle
       };
     case RECIPES_CALL:
       return {

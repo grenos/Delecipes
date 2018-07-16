@@ -1,10 +1,20 @@
 import { RECIPES_CALL, INPUT_DATA } from './actionTypes';
 import axios from 'axios';
 
-export const searchRecipes = ({ recipeInput, recipeStyle }) => dispatch => {
+export const recipeInput = ({ recipeInput, recipeStyle }) => ({
+  type: INPUT_DATA,
+  recipeInput,
+  recipeStyle
+});
+
+export const searchRecipes = ({
+  recipeInput,
+  recipeStyle,
+  offset = 0
+}) => dispatch => {
   axios
     .get(
-      `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${recipeStyle}&instructionsRequired=true&limitLicense=false&number=10&offset=0&query=${recipeInput}`,
+      `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${recipeStyle}&instructionsRequired=true&limitLicense=false&number=10&offset=${offset}&query=${recipeInput}`,
       {
         headers: {
           'X-Mashape-Key': API_KEY,
@@ -25,8 +35,3 @@ export const searchRecipes = ({ recipeInput, recipeStyle }) => dispatch => {
       console.log(err);
     });
 };
-
-export const recipeInput = ({ recipeInput }) => ({
-  type: INPUT_DATA,
-  recipeInput
-});

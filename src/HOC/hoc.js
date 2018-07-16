@@ -7,3 +7,10 @@ const newSearch = WrappedComponent => {
 };
 
 export const createSearch = newSearch(Search);
+
+// called like this on a component
+
+//import { createSearch } from '../../HOC/hoc';
+{
+  /* {createSearch()} */
+}

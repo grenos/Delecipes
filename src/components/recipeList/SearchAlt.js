@@ -28,7 +28,8 @@ class SearchAlt extends Component {
 
     this.state = {
       recipeInput: '',
-      recipeStyle: ''
+      recipeStyle: '',
+      offset: ''
     };
   }
 
@@ -49,7 +50,8 @@ class SearchAlt extends Component {
     e.preventDefault();
     this.props.onSubmit({
       recipeInput: this.state.recipeInput,
-      recipeStyle: this.state.recipeStyle
+      recipeStyle: this.state.recipeStyle,
+      offset: this.state.offset
     });
     this.props.history.push(`/recipes/${this.state.recipeInput}`);
   };
