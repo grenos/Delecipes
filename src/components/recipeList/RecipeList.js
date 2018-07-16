@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import RecipeCard from '../recipeCard/RecipeCard';
 import { Container, Row } from 'reactstrap';
 import SearchAlt from './SearchAlt';
-import Waypoint from 'react-waypoint';
 
+import Waypoint from 'react-waypoint';
 import MyNavbar from '../navbar/MyNavbar';
 import { searchRecipes, recipeInput } from '../../redux/actions/actions';
 import store from '../../redux/store/configureStore';
@@ -21,23 +21,19 @@ class RecipeList extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = {
-    //   showWaypoint: true
-    // };
-  }
-
-  // call waypoint after the initial component render to avoid auto-calling it at init
-  componentDidUpdate() {
-    // get values from redux store (mapStateToProps)
-    this._handleWaypointEnter = () => {
-      // const page = offset + 10;
-      // this.props.searchRecipes(
-      //   this.props.recipeInputText,
-      //   this.props.recipeStyle
-      // );
-      console.log('fires');
+    this.state = {
+      offset: 0
     };
   }
+
+  _handleWaypointEnter = () => {
+    console.log('works');
+    this.props.searchRecipes({
+      recipeInput: this.props.recipeInputText,
+      recipeData: this.props.recipeStyle,
+      offset: this.state.offset + 10
+    });
+  };
 
   render() {
     // capitalise the input text for the global results header
@@ -52,9 +48,7 @@ class RecipeList extends React.Component {
             <div className="col-md-8">
               <SearchAlt
                 onSubmit={recipeData => {
-                  // call api
                   this.props.searchRecipes(recipeData);
-                  // dispatch search data to save to store
                   store.dispatch(recipeInput(recipeData));
                 }}
               />
@@ -74,12 +68,17 @@ class RecipeList extends React.Component {
               })}
 
               {/* <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard />
-            <RecipeCard /> */}
-
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard />
+              <RecipeCard /> */}
               <Waypoint onEnter={this._handleWaypointEnter} />
             </div>
           </Row>
@@ -89,11 +88,7 @@ class RecipeList extends React.Component {
   }
 }
 
-// determines what infop from the store we provide to the 'connect' component
-// 1 recipes ..
-// 2 searchData = number of returned results
-// 3 recipeInputText ..
-// 4 recipeStyle ..
+// determines what infop from the store we provide to the 'connected' components
 const mapStateToProps = state => {
   return {
     recipes: state.apiReducer.recipes,

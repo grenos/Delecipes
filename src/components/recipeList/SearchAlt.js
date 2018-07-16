@@ -28,18 +28,15 @@ class SearchAlt extends Component {
 
     this.state = {
       recipeInput: '',
-      recipeStyle: '',
-      offset: ''
+      recipeStyle: ''
     };
   }
 
-  //! set input value to component state
   recipeInputData = e => {
     const inputData = e.target.value;
     this.setState({ recipeInput: inputData });
   };
 
-  //! set select value to component state
   recipeStyleData = e => {
     const selectData = e.target.value;
     this.setState({ recipeStyle: selectData });
@@ -50,8 +47,7 @@ class SearchAlt extends Component {
     e.preventDefault();
     this.props.onSubmit({
       recipeInput: this.state.recipeInput,
-      recipeStyle: this.state.recipeStyle,
-      offset: this.state.offset
+      recipeStyle: this.state.recipeStyle
     });
     this.props.history.push(`/recipes/${this.state.recipeInput}`);
   };

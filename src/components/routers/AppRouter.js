@@ -1,5 +1,7 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+import { history } from '../../redux/store/configureStore';
 
 import Dashboard from '../dashboard/Dashboard';
 import RecipeList from '../recipeList/RecipeList';
@@ -7,7 +9,7 @@ import RecipeDetails from '../recipeDetails/RecipeDetails';
 import NotFound from '../notFound/NotFound';
 
 const AppRouter = () => (
-  <BrowserRouter>
+  <ConnectedRouter history={history}>
     <div>
       <Switch>
         <Route path="/" exact={true} component={Dashboard} />
@@ -20,7 +22,7 @@ const AppRouter = () => (
         <Route component={NotFound} />
       </Switch>
     </div>
-  </BrowserRouter>
+  </ConnectedRouter>
 );
 
 export default AppRouter;

@@ -1,5 +1,7 @@
 import { RECIPES_CALL, INPUT_DATA } from './actionTypes';
 import axios from 'axios';
+import store from '../../redux/store/configureStore';
+import { push } from 'react-router-redux';
 
 export const recipeInput = ({ recipeInput, recipeStyle }) => ({
   type: INPUT_DATA,
@@ -23,13 +25,15 @@ export const searchRecipes = ({
       }
     )
     .then(res => {
-      console.log(res);
-      console.log(res.headers);
+      console.log(res.config.url);
       dispatch({
         type: RECIPES_CALL,
         payload: res.data.results,
         payloadInfo: res.data.totalResults
       });
+    })
+    .then(() => {
+      store.dispatch(push(`/recipes/${recipeInput}`));
     })
     .catch(err => {
       console.log(err);
