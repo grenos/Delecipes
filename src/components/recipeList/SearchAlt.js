@@ -49,7 +49,6 @@ class SearchAlt extends Component {
       recipeInput: this.state.recipeInput,
       recipeStyle: this.state.recipeStyle
     });
-    this.props.history.push(`/recipes/${this.state.recipeInput}`);
   };
 
   render() {

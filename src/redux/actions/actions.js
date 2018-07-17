@@ -1,6 +1,5 @@
-import { RECIPES_CALL, INPUT_DATA } from './actionTypes';
+import { RECIPES_CALL, INPUT_DATA, RESET_STATE } from './actionTypes';
 import axios from 'axios';
-import store from '../../redux/store/configureStore';
 import { push } from 'react-router-redux';
 
 export const recipeInput = ({ recipeInput, recipeStyle }) => ({
@@ -25,20 +24,24 @@ export const searchRecipes = ({
       }
     )
     .then(res => {
-      console.log(res.config.url);
+      //console.log(res.config.url);
       console.log(res);
-      dispatch({
-        type: RECIPES_CALL,
-        payload: res.data.results,
-        payloadInfo: res.data.totalResults
-      });
+      dispatch(getRecipesData(res));
     })
     .then(() => {
-      store.dispatch(push(`/recipes/${recipeInput}`));
+      dispatch(push(`/recipes/${recipeInput}`));
     })
     .catch(err => {
       console.log(err);
     });
 };
 
-//! I CAN REPLACE THE ACTION CALL WITH A DISPATCH TO AN ACTION CALL FOR HOUSEKEEPING
+export const getRecipesData = res => ({
+  type: RECIPES_CALL,
+  payload: res.data.results,
+  payloadInfo: res.data.totalResults
+});
+
+export const resetState = () => ({
+  type: RESET_STATE
+});

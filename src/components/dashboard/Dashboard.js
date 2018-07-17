@@ -11,7 +11,11 @@ import Header from './Header';
 import Search from './Search';
 
 //! redux components
-import { searchRecipes, recipeInput } from '../../redux/actions/actions';
+import {
+  searchRecipes,
+  recipeInput,
+  resetState
+} from '../../redux/actions/actions';
 import store from '../../redux/store/configureStore';
 
 //! component style
@@ -52,6 +56,7 @@ const Dashboard = props => {
             <InputBox className="col-md-6">
               <Search
                 onSubmit={recipeData => {
+                  store.dispatch(resetState());
                   props.searchRecipes(recipeData);
                   store.dispatch(recipeInput(recipeData));
                 }}
@@ -66,5 +71,5 @@ const Dashboard = props => {
 
 export default connect(
   null,
-  { searchRecipes, recipeInput }
+  { searchRecipes, recipeInput, resetState }
 )(Dashboard);

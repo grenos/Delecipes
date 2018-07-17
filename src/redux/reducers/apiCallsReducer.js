@@ -1,4 +1,4 @@
-import { RECIPES_CALL, INPUT_DATA } from '../actions/actionTypes';
+import { RECIPES_CALL, INPUT_DATA, RESET_STATE } from '../actions/actionTypes';
 
 const defaultState = {
   recipes: [],
@@ -10,6 +10,11 @@ const defaultState = {
 
 const ApiReducer = (state = defaultState, action) => {
   switch (action.type) {
+    case RESET_STATE:
+      return {
+        ...state,
+        recipes: []
+      };
     case INPUT_DATA:
       return {
         ...state,

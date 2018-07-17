@@ -6,7 +6,11 @@ import SearchAlt from './SearchAlt';
 
 import Waypoint from 'react-waypoint';
 import MyNavbar from '../navbar/MyNavbar';
-import { searchRecipes, recipeInput } from '../../redux/actions/actions';
+import {
+  searchRecipes,
+  recipeInput,
+  resetState
+} from '../../redux/actions/actions';
 import store from '../../redux/store/configureStore';
 import capitalizer from '../../helpers/capitalizer';
 
@@ -49,6 +53,7 @@ class RecipeList extends React.Component {
             <div className="col-md-8">
               <SearchAlt
                 onSubmit={recipeData => {
+                  store.dispatch(resetState());
                   this.props.searchRecipes(recipeData);
                   store.dispatch(recipeInput(recipeData));
                 }}
@@ -101,5 +106,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { searchRecipes, recipeInput }
+  { searchRecipes, recipeInput, resetState }
 )(RecipeList);
