@@ -21,6 +21,17 @@ let spanStyle = {
   color: '#259A35'
 };
 
+let loaderStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '2em'
+};
+
+let imgStyle = {
+  maxWidth: '50px',
+  height: '50px'
+};
+
 class RecipeList extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +53,23 @@ class RecipeList extends React.Component {
 
   render() {
     // capitalise the input text for the global results header
-    let capitalise = capitalizer(this.props.recipeInputText);
+    let capitalize = capitalizer(this.props.recipeInputText);
+
+    const loader = (
+      <div style={loaderStyle}>
+        <img
+          style={imgStyle}
+          src="http://media.giphy.com/media/2ysK0aTLbiQ92/200w_d.gif"
+          alt="loading"
+        />
+      </div>
+    );
+
+    const errorMsg = (
+      <div>
+        <h1>Woops! Something went wrong! Try again!</h1>
+      </div>
+    );
 
     return (
       <div>
@@ -66,25 +93,16 @@ class RecipeList extends React.Component {
               <h5 style={{ paddingBottom: '.5em' }}>
                 {this.props.searchData}
                 <span style={spanStyle}> results for </span>
-                {capitalise}
+                {capitalize ? capitalize : 'Top Recipes'}
               </h5>
 
               {this.props.recipes.map(recipe => {
                 return <RecipeCard key={recipe.id} {...recipe} />;
               })}
 
-              {/* <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard />
-              <RecipeCard /> */}
+              {this.props.loading && loader}
+              {this.props.error && errorMsg}
+
               <Waypoint onEnter={this._handleWaypointEnter} />
             </div>
           </Row>
@@ -94,13 +112,14 @@ class RecipeList extends React.Component {
   }
 }
 
-// determines what infop from the store we provide to the 'connected' components
 const mapStateToProps = state => {
   return {
     recipes: state.apiReducer.recipes,
     searchData: state.apiReducer.searchData,
     recipeInputText: state.apiReducer.recipeInput,
-    recipeStyle: state.apiReducer.recipeStyle
+    recipeStyle: state.apiReducer.recipeStyle,
+    loading: state.apiReducer.loading,
+    error: state.apiReducer.error
   };
 };
 

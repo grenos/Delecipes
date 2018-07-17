@@ -1,11 +1,19 @@
-import { RECIPES_CALL, INPUT_DATA, RESET_STATE } from '../actions/actionTypes';
+import {
+  RECIPES_CALL,
+  INPUT_DATA,
+  RESET_STATE,
+  IS_LOADING,
+  HAS_ERRORED
+} from '../actions/actionTypes';
 
 const defaultState = {
   recipes: [],
   recipe: {},
   searchData: '',
   recipeInput: '',
-  recipeStyle: ''
+  recipeStyle: '',
+  loading: false,
+  error: null
 };
 
 const ApiReducer = (state = defaultState, action) => {
@@ -14,6 +22,11 @@ const ApiReducer = (state = defaultState, action) => {
       return {
         ...state,
         recipes: []
+      };
+    case IS_LOADING:
+      return {
+        ...state,
+        loading: true
       };
     case INPUT_DATA:
       return {
@@ -25,7 +38,14 @@ const ApiReducer = (state = defaultState, action) => {
       return {
         ...state,
         recipes: [...state.recipes, ...action.payload], // uses babel object spread operator
-        searchData: action.payloadInfo
+        searchData: action.payloadInfo,
+        loading: false
+      };
+    case HAS_ERRORED:
+      return {
+        ...state,
+        loading: false,
+        error: action.payloadError
       };
     default:
       return state;
