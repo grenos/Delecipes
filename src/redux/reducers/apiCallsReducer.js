@@ -19,7 +19,7 @@ const ApiReducer = (state = defaultState, action) => {
     case RECIPES_CALL:
       return {
         ...state,
-        recipes: action.payload,
+        recipes: [...state.recipes, ...action.payload], // uses babel object spread operator
         searchData: action.payloadInfo
       };
     default:

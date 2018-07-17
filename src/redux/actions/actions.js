@@ -10,8 +10,8 @@ export const recipeInput = ({ recipeInput, recipeStyle }) => ({
 });
 
 export const searchRecipes = ({
-  recipeInput,
-  recipeStyle,
+  recipeInput = '',
+  recipeStyle = '',
   offset = 0
 }) => dispatch => {
   axios
@@ -26,6 +26,7 @@ export const searchRecipes = ({
     )
     .then(res => {
       console.log(res.config.url);
+      console.log(res);
       dispatch({
         type: RECIPES_CALL,
         payload: res.data.results,
@@ -39,3 +40,5 @@ export const searchRecipes = ({
       console.log(err);
     });
 };
+
+//! I CAN REPLACE THE ACTION CALL WITH A DISPATCH TO AN ACTION CALL FOR HOUSEKEEPING

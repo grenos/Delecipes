@@ -27,11 +27,12 @@ class RecipeList extends React.Component {
   }
 
   _handleWaypointEnter = () => {
-    console.log('works');
+    this.setState({ offset: this.state.offset + 10 });
+
     this.props.searchRecipes({
       recipeInput: this.props.recipeInputText,
       recipeData: this.props.recipeStyle,
-      offset: this.state.offset + 10
+      offset: this.state.offset
     });
   };
 
