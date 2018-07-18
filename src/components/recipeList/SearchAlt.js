@@ -9,7 +9,7 @@ const FormCard = styled.div`
   border: 1px solid #eeeeee;
   border-radius: 0.25em;
   justify-content: center;
-  background: url('/dashboard-bg.jpg') no-repeat center center;
+  background: url('/dashboard.jpg') no-repeat center center;
   background-size: cover;
   margin: 1.5em 0 1.5em 0;
   padding .7em 0;

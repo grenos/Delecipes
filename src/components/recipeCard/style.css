@@ -10,3 +10,13 @@
 .buttonStyle{
   margin-bottom: 1em;
 }
+
+.anim-fa-in{
+  animation-name: fadeIn;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}

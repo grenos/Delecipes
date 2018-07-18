@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+//import { dashboard } from '!!file-loader!../../images/dashboard.jpg';
 
 //! global css
 import 'normalize.css';
@@ -25,7 +26,7 @@ const Main = styled.div`
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: url('dashboard-bg.jpg') no-repeat center center;
+  background: url('/dashboard.jpg') no-repeat center center;
   background-size: cover;
 `;
 

@@ -14,6 +14,8 @@ import {
 import store from '../../redux/store/configureStore';
 import capitalizer from '../../helpers/capitalizer';
 
+import './style.css';
+
 //! CSS
 let spanStyle = {
   fontFamily: 'Alegreya',

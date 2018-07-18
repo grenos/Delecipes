@@ -75,7 +75,7 @@ const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
 
   return (
     <div>
-      <Media style={cardContainer}>
+      <Media className="anim-fa-in" style={cardContainer}>
         <Media left style={imgContainerStyle}>
           <Link to={`/recipes/recipe/${id}/${title}`}>
             <Image

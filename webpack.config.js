@@ -19,6 +19,18 @@ module.exports = {
         test: /\.s?css$/, //support of css and scss
         use: ['style-loader', 'css-loader', 'sass-loader']
       }
+      // {
+      //   test: /\.(png|jpg|gif)$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[path][name].[ext]'
+      //         //outputPath: path.join(__dirname, 'public/images')
+      //       }
+      //     }
+      //   ]
+      // }
     ]
   },
   devtool: 'cheap-module-eval-source-map',
