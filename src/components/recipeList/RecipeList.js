@@ -75,7 +75,7 @@ class RecipeList extends React.Component {
 
     return (
       <div>
-        <Container style={{ padding: '70px 0 50px 0' }}>
+        <Container style={{ padding: '70px 0 50px 0', minHeight: '100vh' }}>
           <MyNavbar />
 
           <Row className="justify-content-center">

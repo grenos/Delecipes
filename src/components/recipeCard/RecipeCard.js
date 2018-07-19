@@ -72,12 +72,13 @@ let spanStyle = {
 
 const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
   //
+  const noSpaceUri = title.replace(/\s+/g, '-');
 
   return (
     <div>
       <Media className="anim-fa-in" style={cardContainer}>
         <Media left style={imgContainerStyle}>
-          <Link to={`/recipes/recipe/${id}/${title}`}>
+          <Link to={`/recipes/recipe/${id}/${noSpaceUri}`}>
             <Image
               className="img-fluid"
               object
@@ -88,7 +89,7 @@ const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
         </Media>
 
         <Media body style={{ display: 'flex', flexDirection: 'column' }}>
-          <Link to={`/recipes/recipe/${id}/${title}`}>
+          <Link to={`/recipes/recipe/${id}/${noSpaceUri}`}>
             <Media
               heading
               className="title"
@@ -106,7 +107,7 @@ const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
             </p>
           </div>
           <div style={flexStyle2}>
-            <Link to={`/recipes/recipe/${id}/${title}`}>
+            <Link to={`/recipes/recipe/${id}/${noSpaceUri}`}>
               <button className="btn btn-success btn-sm buttonStyle">
                 Go to Recipe
               </button>

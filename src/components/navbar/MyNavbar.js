@@ -18,7 +18,7 @@ import styled from 'styled-components';
 
 const Logo = styled.h5`
   font-weight: 300;
-  color: white;
+  color: #259a35;
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -28,6 +28,12 @@ const Logo = styled.h5`
   line-height: inherit;
   white-space: nowrap;
 `;
+
+let navStyle = {
+  backgroundColor: 'white',
+  color: 'green',
+  boxShadow: ' 0 5px 15px #9e9e9e'
+};
 class MyNavbar extends Component {
   constructor(props) {
     super(props);
@@ -45,7 +51,7 @@ class MyNavbar extends Component {
   render() {
     return (
       <div>
-        <Navbar color="dark" fixed="top" dark expand="sm">
+        <Navbar style={navStyle} light fixed="top" expand="sm">
           <Link to="/">
             <Logo>Recipes Logo</Logo>
           </Link>
