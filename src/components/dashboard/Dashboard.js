@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { dashboard } from '!!file-loader!../../images/dashboard.jpg';
 
 //! global css
 import 'normalize.css';
@@ -66,11 +65,18 @@ const Dashboard = props => {
           </Row>
         </Container>
       </Main>
+      {props.error && props.history.push(`/NotFound`)}
     </div>
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    error: state.apiReducer.error
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { searchRecipes, recipeInput, resetState }
 )(Dashboard);

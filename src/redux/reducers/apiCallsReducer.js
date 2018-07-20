@@ -3,12 +3,13 @@ import {
   INPUT_DATA,
   RESET_STATE,
   IS_LOADING,
-  HAS_ERRORED
+  HAS_ERRORED,
+  RECIPE_CALL
 } from '../actions/actionTypes';
 
 const defaultState = {
   recipes: [],
-  recipe: {},
+  recipeInfo: {},
   searchData: '',
   recipeInput: '',
   recipeStyle: '',
@@ -39,6 +40,12 @@ const ApiReducer = (state = defaultState, action) => {
         ...state,
         recipes: [...state.recipes, ...action.payload], // uses babel object spread operator
         searchData: action.payloadInfo,
+        loading: false
+      };
+    case RECIPE_CALL:
+      return {
+        ...state,
+        recipeInfo: action.payload,
         loading: false
       };
     case HAS_ERRORED:

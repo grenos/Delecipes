@@ -1,7 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { searchRecipeInfo } from '../../redux/actions/actions';
+import store from '../../redux/store/configureStore';
 
 //! Reactstrap
-import { Link } from 'react-router-dom';
 import { Media } from 'reactstrap';
 
 //! fontawesome
@@ -70,34 +73,36 @@ let spanStyle = {
   color: '#259A35'
 };
 
-const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
+const RecipeCard = props => {
   //
-  const noSpaceUri = title.replace(/\s+/g, '-');
+  const { id, title, readyInMinutes, servings, image } = props.recipe;
 
   return (
     <div>
       <Media className="anim-fa-in" style={cardContainer}>
         <Media left style={imgContainerStyle}>
-          <Link to={`/recipes/recipe/${id}/${noSpaceUri}`}>
-            <Image
-              className="img-fluid"
-              object
-              src={`https://spoonacular.com/recipeImages/${image}`}
-              alt="Recipe Image"
-            />
-          </Link>
+          <Image
+            className="img-fluid"
+            object
+            src={`https://spoonacular.com/recipeImages/${image}`}
+            alt="Recipe Image"
+            onClick={() => {
+              props.searchRecipeInfo({ id, title });
+            }}
+          />
         </Media>
 
         <Media body style={{ display: 'flex', flexDirection: 'column' }}>
-          <Link to={`/recipes/recipe/${id}/${noSpaceUri}`}>
-            <Media
-              heading
-              className="title"
-              style={{ fontWeight: '600', color: '#212121' }}
-            >
-              {title}
-            </Media>
-          </Link>
+          <Media
+            heading
+            className="title"
+            style={{ fontWeight: '600', color: '#212121' }}
+            onClick={() => {
+              props.searchRecipeInfo({ id, title });
+            }}
+          >
+            {title}
+          </Media>
           <div style={flexStyle1}>
             <p style={{ marginRight: '1em' }}>
               Ready in <span style={spanStyle}>{readyInMinutes}</span> min.
@@ -107,11 +112,14 @@ const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
             </p>
           </div>
           <div style={flexStyle2}>
-            <Link to={`/recipes/recipe/${id}/${noSpaceUri}`}>
-              <button className="btn btn-success btn-sm buttonStyle">
-                Go to Recipe
-              </button>
-            </Link>
+            <button
+              className="btn btn-success btn-sm buttonStyle"
+              onClick={() => {
+                props.searchRecipeInfo({ id, title });
+              }}
+            >
+              Go to Recipe
+            </button>
             <Social>
               <FontAwesomeIcon icon={faFacebookSquare} style={iconStyle} />
               <FontAwesomeIcon icon={faTwitterSquare} style={iconStyle} />
@@ -124,12 +132,7 @@ const RecipeCard = ({ id, title, readyInMinutes, servings, image }) => {
   );
 };
 
-export default RecipeCard;
-
-// left bottom
-// left top
-// left middle
-
-// {`https://spoonacular.com/recipeImages/${image}`}
-
-// "/dashboard-bg.jpg" alt="Recipe Image"
+export default connect(
+  null,
+  { searchRecipeInfo }
+)(RecipeCard);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import RecipeCard from '../recipeCard/RecipeCard';
 import { Container, Row } from 'reactstrap';
 import SearchAlt from './SearchAlt';
+import Spinner from '../spinner/Spinner';
 
 import Waypoint from 'react-waypoint';
 import MyNavbar from '../navbar/MyNavbar';
@@ -21,17 +22,6 @@ let spanStyle = {
   fontFamily: 'Alegreya',
   fontSize: '1em',
   color: '#259A35'
-};
-
-let loaderStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  marginTop: '2em'
-};
-
-let imgStyle = {
-  maxWidth: '50px',
-  height: '50px'
 };
 
 class RecipeList extends React.Component {
@@ -56,22 +46,6 @@ class RecipeList extends React.Component {
   render() {
     // capitalise the input text for the global results header
     let capitalize = capitalizer(this.props.recipeInputText);
-
-    const loader = (
-      <div style={loaderStyle}>
-        <img
-          style={imgStyle}
-          src="http://media.giphy.com/media/2ysK0aTLbiQ92/200w_d.gif"
-          alt="loading"
-        />
-      </div>
-    );
-
-    const errorMsg = (
-      <div>
-        <h1>Woops! Something went wrong! Try again!</h1>
-      </div>
-    );
 
     return (
       <div>
@@ -99,13 +73,13 @@ class RecipeList extends React.Component {
               </h5>
 
               {this.props.recipes.map(recipe => {
-                return <RecipeCard key={recipe.id} {...recipe} />;
+                return <RecipeCard key={recipe.id} recipe={recipe} />;
               })}
 
-              {this.props.loading && loader}
-              {this.props.error && errorMsg}
+              {this.props.loading && <Spinner />}
+              {this.props.error && this.props.history.push(`/NotFound`)}
 
-              <Waypoint onEnter={this._handleWaypointEnter} />
+              {/* <Waypoint onEnter={this._handleWaypointEnter} /> */}
             </div>
           </Row>
         </Container>
@@ -127,5 +101,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { searchRecipes, recipeInput, resetState }
+  { searchRecipes }
 )(RecipeList);
