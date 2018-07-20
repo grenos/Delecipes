@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { searchRecipeInfo } from '../../redux/actions/actions';
-import store from '../../redux/store/configureStore';
+import { searchRecipeInfo, getRecipeSum } from '../../redux/actions/actions';
 
 //! Reactstrap
 import { Media } from 'reactstrap';
@@ -88,6 +87,7 @@ const RecipeCard = props => {
             alt="Recipe Image"
             onClick={() => {
               props.searchRecipeInfo({ id, title });
+              props.getRecipeSum(id);
             }}
           />
         </Media>
@@ -99,6 +99,7 @@ const RecipeCard = props => {
             style={{ fontWeight: '600', color: '#212121' }}
             onClick={() => {
               props.searchRecipeInfo({ id, title });
+              props.getRecipeSum(id);
             }}
           >
             {title}
@@ -116,6 +117,7 @@ const RecipeCard = props => {
               className="btn btn-success btn-sm buttonStyle"
               onClick={() => {
                 props.searchRecipeInfo({ id, title });
+                props.getRecipeSum(id);
               }}
             >
               Go to Recipe
@@ -134,5 +136,5 @@ const RecipeCard = props => {
 
 export default connect(
   null,
-  { searchRecipeInfo }
+  { searchRecipeInfo, getRecipeSum }
 )(RecipeCard);

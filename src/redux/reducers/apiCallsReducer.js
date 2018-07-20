@@ -4,12 +4,14 @@ import {
   RESET_STATE,
   IS_LOADING,
   HAS_ERRORED,
-  RECIPE_CALL
+  RECIPE_CALL,
+  RECIPE_SUM
 } from '../actions/actionTypes';
 
 const defaultState = {
   recipes: [],
   recipeInfo: {},
+  recipeSum: '',
   searchData: '',
   recipeInput: '',
   recipeStyle: '',
@@ -46,6 +48,12 @@ const ApiReducer = (state = defaultState, action) => {
       return {
         ...state,
         recipeInfo: action.payload,
+        loading: false
+      };
+    case RECIPE_SUM:
+      return {
+        ...state,
+        recipeSum: action.payload,
         loading: false
       };
     case HAS_ERRORED:

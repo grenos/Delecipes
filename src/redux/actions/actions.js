@@ -4,7 +4,8 @@ import {
   RESET_STATE,
   IS_LOADING,
   HAS_ERRORED,
-  RECIPE_CALL
+  RECIPE_CALL,
+  RECIPE_SUM
 } from './actionTypes';
 
 import axios from 'axios';
@@ -69,6 +70,30 @@ export const searchRecipeInfo = ({ id, title }) => dispatch => {
     });
 };
 
+//! get recipe summary
+export const getRecipeSum = id => dispatch => {
+  dispatch(callIsLoading());
+
+  axios
+    .get(
+      `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/summary`,
+      {
+        headers: {
+          'X-Mashape-Key': API_KEY,
+          Accept: 'application/json'
+        }
+      }
+    )
+    .then(res => {
+      console.log(res);
+      dispatch(getRecipeSummary(res));
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch(callHasErrored(err));
+    });
+};
+
 export const resetState = () => ({
   type: RESET_STATE
 });
@@ -91,6 +116,11 @@ export const getRecipesData = res => ({
 export const getRecipeData = res => ({
   type: RECIPE_CALL,
   payload: res.data
+});
+
+export const getRecipeSummary = res => ({
+  type: RECIPE_SUM,
+  payload: res.data.summary
 });
 
 export const recipeInput = ({ recipeInput, recipeStyle }) => ({

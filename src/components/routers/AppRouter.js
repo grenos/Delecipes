@@ -10,14 +10,12 @@ import NotFound from '../notFound/NotFound';
 
 const AppRouter = () => (
   <ConnectedRouter history={history}>
-    <div>
-      <Switch>
-        <Route path="/" exact={true} component={Dashboard} />
-        <Route path="/recipes/:search?" exact={true} component={RecipeList} />
-        <Route path="/recipes/recipe/:id?/:title?" component={RecipeDetails} />
-        <Route component={NotFound} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route path="/" exact={true} component={Dashboard} />
+      <Route path="/recipes/:search?" exact={true} component={RecipeList} />
+      <Route path="/recipes/recipe/:id?/:title?" component={RecipeDetails} />
+      <Route component={NotFound} />
+    </Switch>
   </ConnectedRouter>
 );
 
