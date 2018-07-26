@@ -1,15 +1,83 @@
-.title:hover{
+.card-wrapper{
+  margin-top: 1em;
+  background: white;
+  padding: 1em 1em 0 1em;
+  border-radius: .25em;
+  box-shadow: 1px 1px 10px #757575;
+}
+
+.card__img-container{
+  height: 120px;
+  width: 120px;
+  overflow: hidden;
+  margin-right: 2em;
+  padding-bottom: 2em;
+  margin-bottom: 1em;
+  border-radius: .25em;
+}
+
+.card__img{
+  max-width: 210%;
+  max-height: 210%;
+}
+
+.card__header{
+  font-weight: 600; 
+  color: #212121;
+}
+
+.card__header--color:hover{
   background: #3CA55C;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #B5AC49, #3CA55C);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #B5AC49, #3CA55C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 600; 
+  -webkit-text-fill-color: transparent; 
 }
 
-.buttonStyle{
+.card__details{
+  margin-right: 1em;
+}
+
+.card__details--span{
+  font-family: Alegreya;
+  color: #259A35;
+}
+
+.button--spacing{
   margin-bottom: 1em;
 }
+
+.icon--main-style{
+  margin-right: .3em;
+  font-size: 2em;
+  color: #259A35;
+}
+
+/* - - - HELPERS - - - */
+
+.flex-helper-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-helper-row{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.flex-helper-row--spacing{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: .3em;
+  margin-bottom: .3em;
+}
+
+/* - - - ANIMATION - - - */
 
 .anim-fa-in{
   animation-name: fadeIn;

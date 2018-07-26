@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { Card, CardTitle, CardText, CardBody, Row } from 'reactstrap';
 
@@ -7,23 +9,6 @@ import capitalizer from '../../helpers/capitalizer';
 // import recipeResponse from '../../../recipeResponse.json';
 
 import styled from 'styled-components';
-
-let cardStyle = {
-  margin: '1em 0 1em 0',
-  minHeight: '200px'
-};
-
-let titleStyle = {
-  margin: '0',
-  fontSize: '1em'
-};
-
-let cardBodyStyle = {
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  padding: '0'
-};
 
 const ImgContainer = styled.div`
   display: flex;
@@ -43,9 +28,9 @@ const IngredientCard = props => {
       {extendedIngredients.map((ingredientItem, index) => {
         return (
           <div className="col-lg-2 col-md-4 col-sm-6" key={index}>
-            <Card style={cardStyle}>
-              <CardBody style={cardBodyStyle}>
-                <CardTitle style={titleStyle}>
+            <Card className="recipe-main__card">
+              <CardBody className="card__body">
+                <CardTitle className="card__title">
                   {capitalizer(ingredientItem.name)}
                 </CardTitle>
               </CardBody>
@@ -72,6 +57,12 @@ const mapStateToProps = state => {
   return {
     recipeInfo: state.apiReducer.recipeInfo
   };
+};
+
+IngredientCard.propTypes = {
+  recipeInfo: PropTypes.shape({
+    extendedIngredients: PropTypes.array.isRequired
+  })
 };
 
 export default connect(mapStateToProps)(IngredientCard);

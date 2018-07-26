@@ -1,0 +1,26 @@
+.recipe-list__container{
+  padding: 70px 0 50px 0; 
+  min-height: 100vh;
+}
+
+.recipe-data__title{
+  padding-bottom: .5em; 
+}
+
+.recipe-data__title--span{
+  font-family: Alegreya;
+  font-size: 1em;
+  color: #259A35;
+}
+
+.formCard__form{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.formCard__form-group{
+  margin-right: 1em;
+}
+

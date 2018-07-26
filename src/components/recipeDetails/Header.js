@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { Row } from 'reactstrap';
 
@@ -10,15 +12,15 @@ const Header = props => {
   return (
     <Row>
       <div className="col-md-12 mb-4">
-        <h1 className="recipe-info-title" style={{ fontSize: '3em' }}>
+        <h1 className="recipe-main__title" style={{ fontSize: '3em' }}>
           {title}
         </h1>
         <div className="col-md-12" className="make-flex-row">
           <h5>
-            <span className="quote-span">written by</span> {sourceName}
+            <span className="author--quote-span">written by</span> {sourceName}
           </h5>
           <h5 style={{ marginLeft: '5px' }}>
-            <a className="quote-span" href={sourceUrl}>
+            <a className="author--quote-span" href={sourceUrl}>
               Original Article
             </a>
           </h5>
@@ -32,6 +34,14 @@ const mapStateToProps = state => {
   return {
     recipeInfo: state.apiReducer.recipeInfo
   };
+};
+
+Header.propTypes = {
+  recipeInfo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    sourceName: PropTypes.string.isRequired,
+    sourceUrl: PropTypes.string.isRequired
+  })
 };
 
 export default connect(mapStateToProps)(Header);

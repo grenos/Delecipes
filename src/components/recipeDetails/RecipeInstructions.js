@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 
@@ -14,8 +16,12 @@ const RecipeInstructions = props => {
           return (
             <div key={index}>
               <ListGroup>
-                <ListGroupItem className="justify-content-between instruction-list-item">
-                  <Badge color="warning" className="ol-badges" pill>
+                <ListGroupItem className="justify-content-between recipe-instruction__list-item">
+                  <Badge
+                    color="warning"
+                    className="list-item__list-badges--size"
+                    pill
+                  >
                     {index + 1}
                   </Badge>{' '}
                   {individualStep.step}
@@ -33,6 +39,12 @@ const mapStateToProps = state => {
   return {
     recipeInfo: state.apiReducer.recipeInfo
   };
+};
+
+RecipeInstructions.propTypes = {
+  recipeInfo: PropTypes.shape({
+    analyzedInstructions: PropTypes.array.isRequired
+  })
 };
 
 export default connect(mapStateToProps)(RecipeInstructions);

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import DOMPurify from 'dompurify';
 import { Row } from 'reactstrap';
@@ -16,11 +18,11 @@ const TopWindow = props => {
   return (
     <Row className="top-window-wrapper">
       <div className="col-md-6">
-        <img className="top-window-img" src={image} alt="recipe image" />
+        <img className="top-window__img" src={image} alt="recipe image" />
       </div>
       <div className="col-md-6">
         <h5
-          className="recipe-sum"
+          className="top-window__recipe-sum"
           dangerouslySetInnerHTML={{ __html: `${text}` }}
         />
       </div>
@@ -33,6 +35,15 @@ const mapStateToProps = state => {
     recipeInfo: state.apiReducer.recipeInfo,
     recipeSum: state.apiReducer.recipeSum
   };
+};
+
+TopWindow.propTypes = {
+  recipeInfo: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    sourceName: PropTypes.string.isRequired,
+    sourceUrl: PropTypes.string.isRequired
+  }),
+  recipeSum: PropTypes.string.isRequired
 };
 
 export default connect(mapStateToProps)(TopWindow);

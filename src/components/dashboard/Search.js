@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
 
-import { withRouter } from 'react-router-dom';
+import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
 
 import styled from 'styled-components';
 
@@ -51,7 +50,6 @@ class Search extends Component {
       recipeInput: this.state.recipeInput,
       recipeStyle: this.state.recipeStyle
     });
-    //this.props.history.push(`/recipes/${this.state.recipeInput}`);
   };
 
   render() {
@@ -107,4 +105,4 @@ class Search extends Component {
   }
 }
 
-export default withRouter(Search);
+export default Search;

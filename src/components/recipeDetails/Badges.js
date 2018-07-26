@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import { Badge } from 'reactstrap';
 
@@ -14,12 +16,12 @@ const Badges = props => {
   } = props.recipeInfo;
 
   return (
-    <div className="recipe-info-badges">
+    <div className="recipe-main__badges">
       <Badge color="info" pill>
-        Preparation: {preparationMinutes}'
+        Preparation: {preparationMinutes ? preparationMinutes + ' min' : 'n/a'}
       </Badge>
       <Badge color="info" pill>
-        Ready in: {readyInMinutes}'
+        Ready in: {readyInMinutes} min
       </Badge>
       <Badge color="info" pill>
         Servings: {servings}
@@ -46,6 +48,16 @@ const mapStateToProps = state => {
   return {
     recipeInfo: state.apiReducer.recipeInfo
   };
+};
+
+Badges.propTypes = {
+  recipeInfo: PropTypes.shape({
+    preparationMinutes: PropTypes.number.isRequired,
+    readyInMinutes: PropTypes.number.isRequired,
+    servings: PropTypes.number.isRequired,
+    cuisines: PropTypes.array.isRequired,
+    dishTypes: PropTypes.array.isRequired
+  })
 };
 
 export default connect(mapStateToProps)(Badges);

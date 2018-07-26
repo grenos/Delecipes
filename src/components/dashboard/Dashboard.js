@@ -47,7 +47,7 @@ const InputBox = styled.div`
 const Dashboard = props => {
   return (
     <div>
-      <Main className="jumbotron jumbotron-fluid">
+      <Main>
         <Container fluid>
           <Row>
             <TextBox className="col-md-6">
@@ -65,7 +65,6 @@ const Dashboard = props => {
           </Row>
         </Container>
       </Main>
-      {props.error && props.history.push(`/NotFound`)}
     </div>
   );
 };

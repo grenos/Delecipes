@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
+import { Button, FormGroup, Input, Form } from 'reactstrap';
 
 import { withRouter } from 'react-router-dom';
 
+import './style.css';
 import styled from 'styled-components';
 
 const FormCard = styled.div`
@@ -14,13 +15,6 @@ const FormCard = styled.div`
   margin: 1.5em 0 1.5em 0;
   padding .7em 0;
 `;
-
-let formStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  marginTop: '1em'
-};
 
 class SearchAlt extends Component {
   constructor(props) {
@@ -54,8 +48,8 @@ class SearchAlt extends Component {
   render() {
     return (
       <FormCard>
-        <Form style={formStyle} onSubmit={this.onSubmit}>
-          <FormGroup style={{ marginRight: '1em' }}>
+        <Form className="formCard__form" onSubmit={this.onSubmit}>
+          <FormGroup className="formCard__form-group">
             <Input
               type="text"
               name="search"
@@ -63,7 +57,7 @@ class SearchAlt extends Component {
               onChange={this.recipeInputData}
             />
           </FormGroup>
-          <FormGroup style={{ marginRight: '1em' }}>
+          <FormGroup className="formCard__form-group">
             <Input
               type="select"
               name="select"
@@ -85,7 +79,7 @@ class SearchAlt extends Component {
               <option value="latin american">Latin American</option>
             </Input>
           </FormGroup>
-          <FormGroup style={{ marginRight: '1em' }}>
+          <FormGroup className="formCard__form-group">
             <Button color="success" type="submit">
               Search
             </Button>

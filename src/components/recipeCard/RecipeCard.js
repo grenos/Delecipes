@@ -18,71 +18,31 @@ import {
 import './style.css';
 import styled from 'styled-components';
 
-let cardContainer = {
-  marginTop: '1em',
-  background: 'white',
-  padding: '1em 1em 0 1em',
-  borderRadius: '.25em',
-  boxShadow: '1px 1px 10px #757575'
-};
-
-let imgContainerStyle = {
-  height: '120px',
-  width: '120px',
-  overflow: 'hidden',
-  marginRight: '2em',
-  paddingBottom: '2em',
-  marginBottom: '1em',
-  borderRadius: '.25em'
-};
-
-const Image = styled.img`
-  max-width: 210%;
-  max-height: 210%;
-`;
-
 const Social = styled.div`
   display: flex;
 `;
-
-let iconStyle = {
-  marginRight: '.3em',
-  fontSize: '2em',
-  color: '#259A35'
-};
-
-let flexStyle1 = {
-  display: 'flex',
-  flexDirection: 'row',
-  width: '100%',
-  justifyContent: 'flex-start'
-};
-
-let flexStyle2 = {
-  display: 'flex',
-  flexDirection: 'row',
-  width: '100%',
-  justifyContent: 'space-between',
-  marginTop: '.3em',
-  marginBottom: '.3em'
-};
-
-let spanStyle = {
-  fontFamily: 'Alegreya',
-  color: '#259A35'
-};
 
 const RecipeCard = props => {
   //
   const { id, title, readyInMinutes, servings, image } = props.recipe;
 
+  const FBShare = () => {
+    FB.ui(
+      {
+        method: 'share',
+        display: 'popup',
+        href: 'https://developers.facebook.com/docs/'
+      },
+      function(response) {}
+    );
+  };
+
   return (
     <div>
-      <Media className="anim-fa-in" style={cardContainer}>
-        <Media left style={imgContainerStyle}>
-          <Image
-            className="img-fluid"
-            object
+      <Media className="anim-fa-in card-wrapper">
+        <Media left className="card__img-container">
+          <img
+            className="img-fluid card__img"
             src={`https://spoonacular.com/recipeImages/${image}`}
             alt="Recipe Image"
             onClick={() => {
@@ -92,11 +52,10 @@ const RecipeCard = props => {
           />
         </Media>
 
-        <Media body style={{ display: 'flex', flexDirection: 'column' }}>
+        <Media body className="flex-helper-column">
           <Media
             heading
-            className="title"
-            style={{ fontWeight: '600', color: '#212121' }}
+            className="card__header card__header--color"
             onClick={() => {
               props.searchRecipeInfo({ id, title });
               props.getRecipeSum(id);
@@ -104,17 +63,19 @@ const RecipeCard = props => {
           >
             {title}
           </Media>
-          <div style={flexStyle1}>
-            <p style={{ marginRight: '1em' }}>
-              Ready in <span style={spanStyle}>{readyInMinutes}</span> min.
+          <div className="flex-helper-row">
+            <p className="card__details">
+              Ready in{' '}
+              <span className="card__details--span">{readyInMinutes}</span> min.
             </p>
-            <p style={{ marginRight: '1em' }}>
-              Serves <span style={spanStyle}>{servings}</span> people
+            <p className="card__details">
+              Serves <span className="card__details--span">{servings}</span>{' '}
+              people
             </p>
           </div>
-          <div style={flexStyle2}>
+          <div className="flex-helper-row--spacing">
             <button
-              className="btn btn-success btn-sm buttonStyle"
+              className="btn btn-success btn-sm button--spacing"
               onClick={() => {
                 props.searchRecipeInfo({ id, title });
                 props.getRecipeSum(id);
@@ -123,9 +84,19 @@ const RecipeCard = props => {
               Go to Recipe
             </button>
             <Social>
-              <FontAwesomeIcon icon={faFacebookSquare} style={iconStyle} />
-              <FontAwesomeIcon icon={faTwitterSquare} style={iconStyle} />
-              <FontAwesomeIcon icon={faGooglePlusSquare} style={iconStyle} />
+              <FontAwesomeIcon
+                icon={faFacebookSquare}
+                className="icon--main-style"
+                onClick={FBShare}
+              />
+              <FontAwesomeIcon
+                icon={faTwitterSquare}
+                className="icon--main-style"
+              />
+              <FontAwesomeIcon
+                icon={faGooglePlusSquare}
+                className="icon--main-style"
+              />
             </Social>
           </div>
         </Media>

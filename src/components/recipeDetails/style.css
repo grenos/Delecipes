@@ -1,10 +1,10 @@
-.wrapper {
+.recipe-main__wrapper {
   padding: 100px 0 50px 0;
   min-height: 100vh;
   background: white;
 }
 
-.back-link {
+.recipe-main__back-link {
   font-family: 'Alegreya', serif;
   color: #259A35;
   font-size: 1.7em;
@@ -12,12 +12,7 @@
   margin: 1em;
 }
 
-.make-flex-row{
-  display: flex;
-  flex-direction: row;
-}
-
-.recipe-info-title{
+.recipe-main__title{
   background: #3CA55C;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #B5AC49, #3CA55C);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #B5AC49, #3CA55C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -26,28 +21,28 @@
   font-weight: 600; 
 }
 
-.quote-span{
+.author--quote-span{
   font-family: 'Alegreya', serif;
   color: #259A35;
   font-style: italic;
 }
 
-.top-window-wrapper{
+.top-window__wrapper{
   margin-bottom: 2em;
 }
 
-.top-window-img{
+.top-window__img{
   width: 100%;
   height: auto;
   border-radius: .25em;
 }
 
-.recipe-sum{
+.top-window__recipe-sum{
   font-size: 1em;
   line-height: 1.4em;
 }
 
-.recipe-info-badges{
+.recipe-main__badges{
   margin: 0 0 2em 0;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -55,16 +50,41 @@
   font-family: 'Alegreya', serif;
 }
 
-.ol-badges {
+.recipe-main__card{
+  margin: 1em 0 1em 0;
+  min-height: 200px;
+}
+
+.card__body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.card__title{
+  margin: 0;
   font-size: 1em;
 }
 
-
-.instruction-list-item {
+.recipe-instruction__list-item {
   border: none;
 }
 
+.list-item__list-badges--size {
+  font-size: 1em;
+}
+
+/* - - - HELPERS - - - */
+
+.make-flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+
 /* - - -  ANIMATIONS - - -  */
+
 .anim-fa-in{
   animation-name: fadeIn;
     animation-duration: 1s;

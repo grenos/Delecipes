@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import RecipeCard from '../recipeCard/RecipeCard';
 import { Container, Row } from 'reactstrap';
 import SearchAlt from './SearchAlt';
@@ -16,13 +18,6 @@ import store from '../../redux/store/configureStore';
 import capitalizer from '../../helpers/capitalizer';
 
 import './style.css';
-
-//! CSS
-let spanStyle = {
-  fontFamily: 'Alegreya',
-  fontSize: '1em',
-  color: '#259A35'
-};
 
 class RecipeList extends React.Component {
   constructor(props) {
@@ -49,7 +44,7 @@ class RecipeList extends React.Component {
 
     return (
       <div>
-        <Container style={{ padding: '70px 0 50px 0', minHeight: '100vh' }}>
+        <Container className="recipe-list__container">
           <MyNavbar />
 
           <Row className="justify-content-center">
@@ -66,9 +61,9 @@ class RecipeList extends React.Component {
 
           <Row className="justify-content-center">
             <div className="col-md-8">
-              <h5 style={{ paddingBottom: '.5em' }}>
+              <h5 className="recipe-data__title">
                 {this.props.searchData}
-                <span style={spanStyle}> results for </span>
+                <span className="recipe-data__title--span"> results for </span>
                 {capitalize ? capitalize : 'Top Recipes'}
               </h5>
 
@@ -77,7 +72,6 @@ class RecipeList extends React.Component {
               })}
 
               {this.props.loading && <Spinner />}
-              {this.props.error && this.props.history.push(`/NotFound`)}
 
               {/* <Waypoint onEnter={this._handleWaypointEnter} /> */}
             </div>
@@ -97,6 +91,13 @@ const mapStateToProps = state => {
     loading: state.apiReducer.loading,
     error: state.apiReducer.error
   };
+};
+
+RecipeList.propTypes = {
+  recipes: PropTypes.array.isRequired,
+  searchData: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  recipeInputText: PropTypes.string.isRequired,
+  recipeStyle: PropTypes.string.isRequired
 };
 
 export default connect(
