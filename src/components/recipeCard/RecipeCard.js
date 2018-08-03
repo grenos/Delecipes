@@ -26,16 +26,16 @@ const RecipeCard = props => {
   //
   const { id, title, readyInMinutes, servings, image } = props.recipe;
 
-  const FBShare = () => {
-    FB.ui(
-      {
-        method: 'share',
-        display: 'popup',
-        href: 'https://developers.facebook.com/docs/'
-      },
-      function(response) {}
-    );
-  };
+  // const FBShare = () => {
+  //   FB.ui(
+  //     {
+  //       method: 'share',
+  //       display: 'popup',
+  //       href: 'https://developers.facebook.com/docs/'
+  //     },
+  //     function(response) {}
+  //   );
+  // };
 
   return (
     <div>
@@ -87,7 +87,6 @@ const RecipeCard = props => {
               <FontAwesomeIcon
                 icon={faFacebookSquare}
                 className="icon--main-style"
-                onClick={FBShare}
               />
               <FontAwesomeIcon
                 icon={faTwitterSquare}

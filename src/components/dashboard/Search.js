@@ -28,8 +28,8 @@ class Search extends Component {
 
     this.state = {
       recipeInput: '',
-      recipeStyle: '',
-      offset: ''
+      recipeStyle: ''
+      // offset: ''
     };
   }
 
