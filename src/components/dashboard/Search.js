@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
-
+import './style.css';
 import { withRouter } from 'react-router-dom';
-
+import { media } from '../../helpers/mediaQTemplate';
 import styled from 'styled-components';
 
 const FormCard = styled.div`
@@ -14,6 +14,13 @@ const FormCard = styled.div`
   justify-content: center;
   padding: 2em;
   background: rgba(0, 0, 0, 0.7);
+
+  ${media.ipad`
+    height: 50vh;
+    width: 100vw;
+    border-radius: 0;
+    background: none;
+  `};
 `;
 
 const SmallTitle = styled.h4`
@@ -21,6 +28,11 @@ const SmallTitle = styled.h4`
   font-size: 2vw;
   margin-bottom: 1em;
   font-weight: 300;
+
+  ${media.ipad`
+    color: #259A35;
+    font-size: 5vw
+  `};
 `;
 
 class Search extends Component {
@@ -51,7 +63,6 @@ class Search extends Component {
       recipeInput: this.state.recipeInput,
       recipeStyle: this.state.recipeStyle
     });
-    //this.props.history.push(`/recipes/${this.state.recipeInput}`);
   };
 
   render() {
