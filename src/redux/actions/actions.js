@@ -9,7 +9,12 @@ import {
 } from './actionTypes';
 
 import axios from 'axios';
+import { RateLimiter } from 'limiter';
 import { push } from 'react-router-redux';
+
+const recipe = new RateLimiter(20, 'day');
+const recipes = new RateLimiter(20, 'day');
+const recipeSum = new RateLimiter(20, 'day');
 
 //! get all recipes
 export const searchRecipes = ({
@@ -17,80 +22,119 @@ export const searchRecipes = ({
   recipeStyle = '',
   offset = 0
 }) => dispatch => {
-  dispatch(callIsLoading());
-
-  axios
-    .get(
-      `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${recipeStyle}&instructionsRequired=true&limitLicense=false&number=4&offset=${offset}&query=${recipeInput}`,
-      {
-        headers: {
-          'X-Mashape-Key': API_KEY,
-          Accept: 'application/json'
-        }
-      }
-    )
-    .then(res => {
-      console.log(res);
-      dispatch(getRecipesData(res));
-    })
-    .then(() => {
-      let noSpaceUri = recipeInput.replace(/\s+/g, '-');
-      dispatch(push(`/recipes/${noSpaceUri}`));
-    })
-    .catch(err => {
-      dispatch(push(`/NotFound`));
-      dispatch(callHasErrored(err));
-    });
+  //
+  recipe.removeTokens(1, (error, remainingRequests) => {
+    error = 'Too many Api calls. Please wait...';
+    const rate = remainingRequests;
+    localStorage.setItem('DO_NOT_DELETE', rate);
+    //
+    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE'));
+    if (controlRate < 1) {
+      console.log(error);
+      dispatch(push(`/network-error`));
+      //
+    } else {
+      dispatch(callIsLoading());
+      axios
+        .get(
+          `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${recipeStyle}&instructionsRequired=true&limitLicense=false&number=4&offset=${offset}&query=${recipeInput}`,
+          {
+            headers: {
+              'X-Mashape-Key': API_KEY,
+              Accept: 'application/json'
+            }
+          }
+        )
+        .then(res => {
+          console.log(res);
+          dispatch(getRecipesData(res));
+        })
+        .then(() => {
+          let noSpaceUri = recipeInput.replace(/\s+/g, '-');
+          dispatch(push(`/recipes/${noSpaceUri}`));
+        })
+        .catch(err => {
+          //dispatch(push(`/NotFound`));
+          dispatch(callHasErrored(err));
+        });
+    }
+  });
 };
 
 //! get individual recipe details
 export const searchRecipeInfo = ({ id, title }) => dispatch => {
-  dispatch(callIsLoading());
-
-  axios
-    .get(
-      `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/information?includeNutrition=false`,
-      {
-        headers: {
-          'X-Mashape-Key': API_KEY,
-          Accept: 'application/json'
-        }
-      }
-    )
-    .then(res => {
-      dispatch(getRecipeData(res));
-    })
-    .then(() => {
-      let noSpaceUri = title.replace(/\s+/g, '-');
-      dispatch(push(`/recipes/recipe/${id}/${noSpaceUri}`));
-    })
-    .catch(err => {
-      dispatch(push(`/NotFound`));
-      dispatch(callHasErrored(err));
-    });
+  //
+  recipes.removeTokens(1, (error, remainingRequests) => {
+    error = 'Too many Api calls. Please wait...';
+    const rate = remainingRequests;
+    localStorage.setItem('DO_NOT_DELETE', rate);
+    //
+    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE'));
+    if (controlRate < 1) {
+      console.log(error);
+      dispatch(push(`/network-error`));
+    } else {
+      dispatch(callIsLoading());
+      axios
+        .get(
+          `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/information?includeNutrition=false`,
+          {
+            headers: {
+              'X-Mashape-Key': API_KEY,
+              Accept: 'application/json'
+            }
+          }
+        )
+        .then(res => {
+          console.log(res);
+          dispatch(getRecipeData(res));
+        })
+        .then(() => {
+          let noSpaceUri = title.replace(/\s+/g, '-');
+          dispatch(push(`/recipes/recipe/${id}/${noSpaceUri}`));
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch(callHasErrored(err));
+        });
+    }
+  });
 };
 
 //! get recipe summary
 export const getRecipeSum = id => dispatch => {
-  dispatch(callIsLoading());
-
-  axios
-    .get(
-      `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/summary`,
-      {
-        headers: {
-          'X-Mashape-Key': API_KEY,
-          Accept: 'application/json'
-        }
-      }
-    )
-    .then(res => {
-      dispatch(getRecipeSummary(res));
-    })
-    .catch(err => {
-      dispatch(push(`/NotFound`));
-      dispatch(callHasErrored(err));
-    });
+  //
+  recipeSum.removeTokens(1, (error, remainingRequests) => {
+    error = 'Too many Api calls. Please wait...';
+    const rate = remainingRequests;
+    localStorage.setItem('DO_NOT_DELETE', rate);
+    //
+    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE'));
+    if (controlRate < 1) {
+      console.log(error);
+      dispatch(push(`/network-error`));
+    } else {
+      dispatch(callIsLoading());
+      axios
+        .get(
+          `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${id}/summary`,
+          {
+            headers: {
+              'X-Mashape-Key': API_KEY,
+              Accept: 'application/json'
+            }
+          }
+        )
+        .then(res => {
+          console.log(res);
+          dispatch(getRecipeSummary(res));
+        })
+        .catch(err => {
+          console.log(err);
+          dispatch(callHasErrored(err));
+        });
+    }
+  });
 };
 
 export const resetState = () => ({

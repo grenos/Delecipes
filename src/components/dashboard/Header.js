@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { media } from '../../helpers/mediaQTemplate';
+
 import styled from 'styled-components';
 
 const BigTitle = styled.h1`
@@ -7,6 +9,11 @@ const BigTitle = styled.h1`
   font-size: 13vw;
   line-height: 0.75em;
   letter-spacing: 0;
+
+  ${media.ipad`
+  line-height: 1em;
+  text-align: center;
+  `};
 `;
 
 const SpanText1 = styled.span`

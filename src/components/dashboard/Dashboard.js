@@ -19,6 +19,7 @@ import {
 import store from '../../redux/store/configureStore';
 
 //! component style
+import { media } from '../../helpers/mediaQTemplate';
 import styled from 'styled-components';
 
 const Main = styled.div`
@@ -27,6 +28,10 @@ const Main = styled.div`
   padding: 0;
   background: url('/dashboard.jpg') no-repeat center center;
   background-size: cover;
+
+  ${media.ipad`
+    height: 50vh;
+  `};
 `;
 
 const TextBox = styled.div`
@@ -35,6 +40,10 @@ const TextBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.ipad`
+    height: 50vh;   
+  `};
 `;
 
 const InputBox = styled.div`
@@ -42,6 +51,11 @@ const InputBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.ipad`
+    height: 50vh;
+    padding: 0;
+  `};
 `;
 
 const Dashboard = props => {
@@ -50,10 +64,10 @@ const Dashboard = props => {
       <Main>
         <Container fluid>
           <Row>
-            <TextBox className="col-md-6">
+            <TextBox className="col-md-12 col-lg-6">
               <Header />
             </TextBox>
-            <InputBox className="col-md-6">
+            <InputBox className="col-md-12 col-lg-6 ipad-mq">
               <Search
                 onSubmit={recipeData => {
                   store.dispatch(resetState());

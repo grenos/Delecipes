@@ -73,7 +73,7 @@ class RecipeList extends React.Component {
 
               {this.props.loading && <Spinner />}
 
-              {/* <Waypoint onEnter={this._handleWaypointEnter} /> */}
+              <Waypoint onEnter={this._handleWaypointEnter} />
             </div>
           </Row>
         </Container>
