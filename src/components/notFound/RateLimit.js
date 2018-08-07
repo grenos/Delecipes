@@ -52,7 +52,7 @@ const RateLimit = () => {
             You have exceeded the daily rate limit for network requests. Please
             note, this site is an expo version and extra costs are introduced to
             the owner on each network request. For more information and
-            resetting your limits please considering contacting the{' '}
+            resetting your limits please consider contacting the{' '}
             <a href="mailto:vasilis.green@gmail.com">owner</a>
           </Title>
         </Msg>
