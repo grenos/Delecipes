@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import './style.css';
 
 const BackLink = styled.div`
-  position: absolute;
   padding: 1em;
   a {
     font-family: 'Alegreya', serif;
     color: #259a35;
-    font-size: 1.7em;
+    font-size: 1.4em;
     font-style: italic;
     margin: 1em;
   }
@@ -26,7 +26,7 @@ const Msg = styled.div`
   display: flex;
   flex-direction: column;
   background: white;
-  padding: 5em;
+  padding: 5em 5em 2em 5em;
   margin: 0 2em;
   border-radius: 0.2em;
   boxshadow: '1px 1px 10px #757575';
@@ -41,11 +41,7 @@ const Title = styled.h3`
 
 const RateLimit = () => {
   return (
-    <div>
-      <BackLink>
-        <Link to="/">Back</Link>
-      </BackLink>
-
+    <div className="wrapper--background">
       <Wrapper>
         <Msg>
           <Title>
@@ -54,6 +50,11 @@ const RateLimit = () => {
             the owner on each network request. For more information and
             resetting your limits please consider contacting the{' '}
             <a href="mailto:vasilis.green@gmail.com">owner</a>
+            ...or just clear your local storage ;)
+            <br />
+            <BackLink>
+              <Link to="/">Back</Link>
+            </BackLink>
           </Title>
         </Msg>
       </Wrapper>

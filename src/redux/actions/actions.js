@@ -54,7 +54,7 @@ export const searchRecipes = ({
           dispatch(push(`/recipes/${noSpaceUri}`));
         })
         .catch(err => {
-          //dispatch(push(`/NotFound`));
+          dispatch(push(`/NotFound`));
           dispatch(callHasErrored(err));
         });
     }
@@ -94,7 +94,7 @@ export const searchRecipeInfo = ({ id, title }) => dispatch => {
           dispatch(push(`/recipes/recipe/${id}/${noSpaceUri}`));
         })
         .catch(err => {
-          console.log(err);
+          dispatch(push(`/NotFound`));
           dispatch(callHasErrored(err));
         });
     }
@@ -130,7 +130,7 @@ export const getRecipeSum = id => dispatch => {
           dispatch(getRecipeSummary(res));
         })
         .catch(err => {
-          console.log(err);
+          dispatch(push(`/NotFound`));
           dispatch(callHasErrored(err));
         });
     }
