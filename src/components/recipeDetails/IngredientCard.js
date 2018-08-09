@@ -6,8 +6,6 @@ import { Card, CardTitle, CardText, CardBody, Row } from 'reactstrap';
 
 import capitalizer from '../../helpers/capitalizer';
 
-// import recipeResponse from '../../../recipeResponse.json';
-
 import styled from 'styled-components';
 
 const ImgContainer = styled.div`

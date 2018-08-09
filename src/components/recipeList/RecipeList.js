@@ -18,6 +18,7 @@ import store from '../../redux/store/configureStore';
 import capitalizer from '../../helpers/capitalizer';
 
 import './style.css';
+//import RecipesRes_1 from '../../mock_json_data/RecipesRes_1.json';
 
 class RecipeList extends React.Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class RecipeList extends React.Component {
           <MyNavbar />
 
           <Row className="justify-content-center">
-            <div className="col-md-8">
+            <div className="col-md-8 no-p-sides">
               <SearchAlt
                 onSubmit={recipeData => {
                   store.dispatch(resetState());
@@ -60,7 +61,7 @@ class RecipeList extends React.Component {
           </Row>
 
           <Row className="justify-content-center">
-            <div className="col-md-8">
+            <div className="col-md-8 no-p-sides">
               <h5 className="recipe-data__title">
                 {this.props.searchData}
                 <span className="recipe-data__title--span"> results for </span>
@@ -70,6 +71,10 @@ class RecipeList extends React.Component {
               {this.props.recipes.map(recipe => {
                 return <RecipeCard key={recipe.id} recipe={recipe} />;
               })}
+
+              {/* {RecipesRes_1.results.map(recipe => {
+                return <RecipeCard key={recipe.id} recipe={recipe} />;
+              })} */}
 
               {this.props.loading && <Spinner />}
 

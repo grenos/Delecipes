@@ -28,10 +28,6 @@ const Main = styled.div`
   padding: 0;
   background: url('/dashboard.jpg') no-repeat center center;
   background-size: cover;
-
-  ${media.ipad`
-    height: 50vh;
-  `};
 `;
 
 const TextBox = styled.div`
@@ -40,10 +36,6 @@ const TextBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  ${media.ipad`
-    height: 50vh;   
-  `};
 `;
 
 const InputBox = styled.div`
@@ -51,23 +43,18 @@ const InputBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  ${media.ipad`
-    height: 50vh;
-    padding: 0;
-  `};
 `;
 
 const Dashboard = props => {
   return (
     <div>
-      <Main>
+      <Main className="dashboard__main">
         <Container fluid>
           <Row>
-            <TextBox className="col-md-12 col-lg-6">
+            <TextBox className="col-md-12 col-lg-6 dashboard__main--left">
               <Header />
             </TextBox>
-            <InputBox className="col-md-12 col-lg-6 ipad-mq">
+            <InputBox className="col-md-12 col-lg-6 ipad-mq dashboard__main--right">
               <Search
                 onSubmit={recipeData => {
                   store.dispatch(resetState());
