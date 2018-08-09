@@ -26,9 +26,9 @@ export const searchRecipes = ({
   recipe.removeTokens(1, (error, remainingRequests) => {
     error = 'Too many Api calls. Please wait...';
     const rate = remainingRequests;
-    localStorage.setItem('DO_NOT_DELETE', rate);
+    localStorage.setItem('DO_NOT_DELETE_01', rate);
     //
-    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE'));
+    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE_01'));
     if (controlRate < 1) {
       console.log(error);
       dispatch(push(`/network-error`));
@@ -67,9 +67,9 @@ export const searchRecipeInfo = ({ id, title }) => dispatch => {
   recipes.removeTokens(1, (error, remainingRequests) => {
     error = 'Too many Api calls. Please wait...';
     const rate = remainingRequests;
-    localStorage.setItem('DO_NOT_DELETE', rate);
+    localStorage.setItem('DO_NOT_DELETE_02', rate);
     //
-    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE'));
+    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE_02'));
     if (controlRate < 1) {
       console.log(error);
       dispatch(push(`/network-error`));
@@ -107,9 +107,9 @@ export const getRecipeSum = id => dispatch => {
   recipeSum.removeTokens(1, (error, remainingRequests) => {
     error = 'Too many Api calls. Please wait...';
     const rate = remainingRequests;
-    localStorage.setItem('DO_NOT_DELETE', rate);
+    localStorage.setItem('DO_NOT_DELETE_03', rate);
     //
-    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE'));
+    const controlRate = JSON.parse(localStorage.getItem('DO_NOT_DELETE_03'));
     if (controlRate < 1) {
       console.log(error);
       dispatch(push(`/network-error`));
