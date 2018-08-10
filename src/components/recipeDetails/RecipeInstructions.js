@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 
-// import recipeResponse from '../../../recipeResponse.json';
+//import RecipeRes_1 from '../../mock_json_data/RecipeRes_1.json';
 
 const RecipeInstructions = props => {
   const { analyzedInstructions } = props.recipeInfo;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Row } from 'reactstrap';
 
-//import recipeResponse from '../../../recipeResponse.json';
+//import RecipeRes_1 from '../../mock_json_data/RecipeRes_1.json';
 
 const Header = props => {
   const { title, sourceName, sourceUrl } = props.recipeInfo;
@@ -19,7 +19,7 @@ const Header = props => {
           <h5>
             <span className="author--quote-span">written by</span> {sourceName}
           </h5>
-          <h5 style={{ marginLeft: '5px' }}>
+          <h5 className="author__title">
             <a className="author--quote-span" href={sourceUrl}>
               Original Article
             </a>

@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Badge } from 'reactstrap';
 
-//import recipeResponse from '../../../recipeResponse.json';
-
 const Badges = props => {
   const {
     preparationMinutes,

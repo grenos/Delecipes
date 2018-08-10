@@ -16,11 +16,6 @@
   border-radius: .25em;
 }
 
-.card__img {
-  max-width: 210%;
-  max-height: 210%;
-}
-
 .card__header {
   font-weight: 600;
   color: #212121;
@@ -119,25 +114,16 @@
   .card__header {
     font-size: 1.4em;
   }
-}
-
-/* ----------- iPhone 6+, 7+ and 8+ ----------- */
-
-@media only screen and (max-device-width: 321px) {
   .media {
     flex-direction: column;
   }
   .card__img-container {
-    height: 100px;
+    height: 150px;
     width: 100%;
     overflow: hidden;
     margin-right: 2em;
     padding-bottom: 2em;
     margin-bottom: 1em;
     border-radius: .25em;
-  }
-  .card__img {
-    width: 100%;
-    max-height: inherit;
   }
 }

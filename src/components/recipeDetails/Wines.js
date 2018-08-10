@@ -2,15 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-// import recipeResponse from '../../../recipeResponse.json';
+//import RecipeRes_1 from '../../mock_json_data/RecipeRes_1.json';
 
 const Wines = props => {
   const { winePairing } = props.recipeInfo;
-  const { pairingText } = winePairing;
 
   return (
     <div>
-      <p>{pairingText}</p>
+      <p>{winePairing.pairingText}</p>
     </div>
   );
 };

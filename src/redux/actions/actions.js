@@ -35,9 +35,12 @@ export const searchRecipes = ({
       //
     } else {
       dispatch(callIsLoading());
+      let noSpaceUri = recipeInput.replace(/\s+/g, '-');
+      dispatch(push(`/recipes/${noSpaceUri}`));
+
       axios
         .get(
-          `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${recipeStyle}&instructionsRequired=true&limitLicense=false&number=4&offset=${offset}&query=${recipeInput}`,
+          `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?cuisine=${recipeStyle}&instructionsRequired=true&limitLicense=false&number=10&offset=${offset}&query=${recipeInput}`,
           {
             headers: {
               'X-Mashape-Key': API_KEY,
@@ -48,10 +51,6 @@ export const searchRecipes = ({
         .then(res => {
           console.log(res);
           dispatch(getRecipesData(res));
-        })
-        .then(() => {
-          let noSpaceUri = recipeInput.replace(/\s+/g, '-');
-          dispatch(push(`/recipes/${noSpaceUri}`));
         })
         .catch(err => {
           dispatch(push(`/NotFound`));

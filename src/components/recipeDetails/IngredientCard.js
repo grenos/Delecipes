@@ -18,6 +18,8 @@ const Image = styled.img`
   max-height: 70px;
 `;
 
+//import RecipeRes_1 from '../../mock_json_data/RecipeRes_1.json';
+
 const IngredientCard = props => {
   const { extendedIngredients } = props.recipeInfo;
 
@@ -25,9 +27,9 @@ const IngredientCard = props => {
     <Row>
       {extendedIngredients.map((ingredientItem, index) => {
         return (
-          <div className="col-lg-2 col-md-4 col-sm-6" key={index}>
+          <div className="col-lg-3 col-md-4 col-sm-6" key={index}>
             <Card className="recipe-main__card">
-              <CardBody className="card__body">
+              <CardBody className="card__body--top">
                 <CardTitle className="card__title">
                   {capitalizer(ingredientItem.name)}
                 </CardTitle>
@@ -40,7 +42,7 @@ const IngredientCard = props => {
                   alt="Card image cap"
                 />
               </ImgContainer>
-              <CardBody style={{ padding: '.5em', textAlign: 'center' }}>
+              <CardBody className="card__body--bottom">
                 <CardText>{ingredientItem.original}</CardText>
               </CardBody>
             </Card>

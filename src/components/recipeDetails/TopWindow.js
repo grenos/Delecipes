@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import DOMPurify from 'dompurify';
 import { Row } from 'reactstrap';
 
-// import recipeResponse from '../../../recipeResponse.json';
-//import sumResponse from '../../../sumResponse.json';
+// import RecipeRes_1 from '../../mock_json_data/RecipeRes_1.json';
+// import ResponseSum_1 from '../../mock_json_data/RecipeSum_1.json';
 
 const TopWindow = props => {
   const { image } = props.recipeInfo;

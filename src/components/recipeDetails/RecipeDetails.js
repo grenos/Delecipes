@@ -7,13 +7,14 @@ import { Container, Row } from 'reactstrap';
 
 import MyNavbar from '../navbar/MyNavbar';
 import Header from './Header';
+import Social from './Social';
 import TopWindow from './TopWindow';
 import Badges from './Badges';
 import IngredientCard from './IngredientCard';
 import RecipeInstructions from './RecipeInstructions';
 import Wines from './Wines';
 
-// import recipeResponse from '../../../recipeResponse.json';
+//import RecipeRes_1 from '../../mock_json_data/RecipeRes_1.json';
 
 import './style.css';
 
@@ -23,7 +24,10 @@ class Recipe extends React.Component {
   }
 
   render() {
+    //
     const { title } = this.props.recipeInfo;
+
+    const location = this.props.location;
 
     return (
       <Container className="recipe-main__wrapper">
@@ -38,6 +42,10 @@ class Recipe extends React.Component {
         <Row className="justify-content-center anim-fa-in">
           <div className="col-md-10">
             <Header />
+          </div>
+
+          <div className="col-md-10">
+            <Social locationUrl={location} />
           </div>
 
           <div className="col-md-10">
