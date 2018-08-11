@@ -39,11 +39,11 @@ const mapStateToProps = state => {
 
 TopWindow.propTypes = {
   recipeInfo: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    sourceName: PropTypes.string.isRequired,
-    sourceUrl: PropTypes.string.isRequired
+    image: PropTypes.string,
+    sourceName: PropTypes.string,
+    sourceUrl: PropTypes.string
   }),
-  recipeSum: PropTypes.string.isRequired
+  recipeSum: PropTypes.string
 };
 
 export default connect(mapStateToProps)(TopWindow);

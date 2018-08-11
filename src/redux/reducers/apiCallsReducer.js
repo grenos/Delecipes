@@ -16,8 +16,7 @@ const defaultState = {
   recipeInput: '',
   recipeStyle: '',
   loading: false,
-  error: null,
-  checkedIngredient: false
+  error: null
 };
 
 const ApiReducer = (state = defaultState, action) => {

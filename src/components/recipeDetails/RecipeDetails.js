@@ -26,7 +26,6 @@ class Recipe extends React.Component {
   render() {
     //
     const { title } = this.props.recipeInfo;
-
     const location = this.props.location;
 
     return (
@@ -87,7 +86,7 @@ const mapStateToProps = state => {
 Recipe.propTypes = {
   recipeInfo: PropTypes.object.isRequired,
   recipeInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired
+    title: PropTypes.string
   })
 };
 

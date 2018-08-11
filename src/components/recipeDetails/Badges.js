@@ -19,25 +19,29 @@ const Badges = props => {
         Preparation: {preparationMinutes ? preparationMinutes + ' min' : 'n/a'}
       </Badge>
       <Badge color="info" pill>
-        Ready in: {readyInMinutes} min
+        Ready in: {readyInMinutes ? readyInMinutes + ' min' : 'n/a'}
       </Badge>
       <Badge color="info" pill>
-        Servings: {servings}
+        Servings: {servings ? servings : 'n/a'}
       </Badge>
-      {cuisines.map((cousine, index) => {
-        return (
-          <Badge key={index} color="warning" pill>
-            {cousine}
-          </Badge>
-        );
-      })}
-      {dishTypes.map((dish, index) => {
-        return (
-          <Badge key={index} color="success" pill>
-            {dish}
-          </Badge>
-        );
-      })}
+      {!cuisines
+        ? null
+        : cuisines.map((cousine, index) => {
+            return (
+              <Badge key={index} color="warning" pill>
+                {cousine}
+              </Badge>
+            );
+          })}
+      {!dishTypes
+        ? null
+        : dishTypes.map((dish, index) => {
+            return (
+              <Badge key={index} color="success" pill>
+                {dish}
+              </Badge>
+            );
+          })}
     </div>
   );
 };
@@ -50,11 +54,11 @@ const mapStateToProps = state => {
 
 Badges.propTypes = {
   recipeInfo: PropTypes.shape({
-    preparationMinutes: PropTypes.number.isRequired,
-    readyInMinutes: PropTypes.number.isRequired,
-    servings: PropTypes.number.isRequired,
-    cuisines: PropTypes.array.isRequired,
-    dishTypes: PropTypes.array.isRequired
+    preparationMinutes: PropTypes.number,
+    readyInMinutes: PropTypes.number,
+    servings: PropTypes.number,
+    cuisines: PropTypes.array,
+    dishTypes: PropTypes.array
   })
 };
 

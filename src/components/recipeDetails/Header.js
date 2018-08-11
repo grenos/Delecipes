@@ -38,9 +38,9 @@ const mapStateToProps = state => {
 
 Header.propTypes = {
   recipeInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    sourceName: PropTypes.string.isRequired,
-    sourceUrl: PropTypes.string.isRequired
+    title: PropTypes.string,
+    sourceName: PropTypes.string,
+    sourceUrl: PropTypes.string
   })
 };
 

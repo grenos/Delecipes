@@ -35,8 +35,6 @@ export const searchRecipes = ({
       //
     } else {
       dispatch(callIsLoading());
-      let noSpaceUri = recipeInput.replace(/\s+/g, '-');
-      dispatch(push(`/recipes/${noSpaceUri}`));
 
       axios
         .get(
@@ -51,6 +49,10 @@ export const searchRecipes = ({
         .then(res => {
           console.log(res);
           dispatch(getRecipesData(res));
+        })
+        .then(() => {
+          let noSpaceUri = recipeInput.replace(/\s+/g, '-');
+          dispatch(push(`/recipes/${noSpaceUri}`));
         })
         .catch(err => {
           dispatch(push(`/NotFound`));

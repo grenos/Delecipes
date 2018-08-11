@@ -14,7 +14,7 @@ import {
   recipeInput,
   resetState
 } from '../../redux/actions/actions';
-import store from '../../redux/store/configureStore';
+import { store, persistor } from '../../redux/store/configureStore';
 import capitalizer from '../../helpers/capitalizer';
 
 import './style.css';
@@ -71,10 +71,6 @@ class RecipeList extends React.Component {
               {this.props.recipes.map(recipe => {
                 return <RecipeCard key={recipe.id} recipe={recipe} />;
               })}
-
-              {/* {RecipesRes_1.results.map(recipe => {
-                return <RecipeCard key={recipe.id} recipe={recipe} />;
-              })} */}
 
               {this.props.loading && <Spinner />}
 

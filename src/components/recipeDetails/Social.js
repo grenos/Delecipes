@@ -19,14 +19,16 @@ const Social = props => {
   //
   const { title } = props.recipeInfo;
   const recipeUrl = `https://grenos.github.io/items/delecipes/${
-    props.locationUrl
+    props.locationUrl.pathname
   }`;
+
   return (
     <div className="social__container">
       <div className="social__some-network">
         <FacebookShareButton
           url={recipeUrl}
           quote={title}
+          hashtag="#Delecipes"
           className="social__some-network__share-button"
         >
           <FacebookIcon size={32} round />
@@ -38,6 +40,7 @@ const Social = props => {
           url={recipeUrl}
           title={title}
           className="social__some-network__share-button"
+          hashtags={['Delecipes', 'Recipes', 'BestRecipes']}
         >
           <TwitterIcon size={32} round />
         </TwitterShareButton>
@@ -76,7 +79,7 @@ const mapStateToProps = state => {
 
 Social.propTypes = {
   recipeInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired
+    title: PropTypes.string
   })
 };
 

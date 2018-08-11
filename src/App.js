@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
 import AppRouter from './components/routers/AppRouter';
-
-import store from './redux/store/configureStore';
+import Spinner from './components/spinner/Spinner';
+import { persistor, store } from './redux/store/configureStore';
 
 import '../src/global_styles.css';
 
@@ -15,9 +16,12 @@ store.subscribe(() => {
 });
 
 /* give access to all components and their childs to the redux store */
+
 const jsx = (
   <Provider store={store}>
-    <AppRouter />
+    <PersistGate loading={<Spinner />} persistor={persistor}>
+      <AppRouter />
+    </PersistGate>
   </Provider>
 );
 

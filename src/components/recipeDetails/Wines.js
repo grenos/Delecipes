@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 
 const Wines = props => {
   const { winePairing } = props.recipeInfo;
+  const pairingText = winePairing.pairingText;
 
   return (
     <div>
-      <p>{winePairing.pairingText}</p>
+      <p>{pairingText ? pairingText : null}</p>
     </div>
   );
 };
@@ -22,10 +23,10 @@ const mapStateToProps = state => {
 
 Wines.propTypes = {
   recipeInfo: PropTypes.shape({
-    winePairing: PropTypes.object.isRequired
+    winePairing: PropTypes.object
   }),
   winePairing: PropTypes.shape({
-    pairingText: PropTypes.string.isRequired
+    pairingText: PropTypes.string
   })
 };
 

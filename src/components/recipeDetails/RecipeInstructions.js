@@ -11,26 +11,28 @@ const RecipeInstructions = props => {
 
   return (
     <div>
-      {analyzedInstructions.map(allSteps => {
-        return allSteps.steps.map((individualStep, index) => {
-          return (
-            <div key={index}>
-              <ListGroup>
-                <ListGroupItem className="justify-content-between recipe-instruction__list-item">
-                  <Badge
-                    color="warning"
-                    className="list-item__list-badges--size"
-                    pill
-                  >
-                    {index + 1}
-                  </Badge>{' '}
-                  {individualStep.step}
-                </ListGroupItem>
-              </ListGroup>
-            </div>
-          );
-        });
-      })}
+      {!analyzedInstructions
+        ? null
+        : analyzedInstructions.map(allSteps => {
+            return allSteps.steps.map((individualStep, index) => {
+              return (
+                <div key={index}>
+                  <ListGroup>
+                    <ListGroupItem className="justify-content-between recipe-instruction__list-item">
+                      <Badge
+                        color="warning"
+                        className="list-item__list-badges--size"
+                        pill
+                      >
+                        {index + 1}
+                      </Badge>{' '}
+                      {individualStep.step}
+                    </ListGroupItem>
+                  </ListGroup>
+                </div>
+              );
+            });
+          })}
     </div>
   );
 };
@@ -43,7 +45,7 @@ const mapStateToProps = state => {
 
 RecipeInstructions.propTypes = {
   recipeInfo: PropTypes.shape({
-    analyzedInstructions: PropTypes.array.isRequired
+    analyzedInstructions: PropTypes.array
   })
 };
 

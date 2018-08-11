@@ -25,30 +25,32 @@ const IngredientCard = props => {
 
   return (
     <Row>
-      {extendedIngredients.map((ingredientItem, index) => {
-        return (
-          <div className="col-lg-3 col-md-4 col-sm-6" key={index}>
-            <Card className="recipe-main__card">
-              <CardBody className="card__body--top">
-                <CardTitle className="card__title">
-                  {capitalizer(ingredientItem.name)}
-                </CardTitle>
-              </CardBody>
-              <ImgContainer>
-                <Image
-                  src={`https://spoonacular.com/cdn/ingredients_100x100/${
-                    ingredientItem.image
-                  }`}
-                  alt="Card image cap"
-                />
-              </ImgContainer>
-              <CardBody className="card__body--bottom">
-                <CardText>{ingredientItem.original}</CardText>
-              </CardBody>
-            </Card>
-          </div>
-        );
-      })}
+      {!extendedIngredients
+        ? null
+        : extendedIngredients.map((ingredientItem, index) => {
+            return (
+              <div className="col-lg-3 col-md-4 col-sm-6" key={index}>
+                <Card className="recipe-main__card">
+                  <CardBody className="card__body--top">
+                    <CardTitle className="card__title">
+                      {capitalizer(ingredientItem.name)}
+                    </CardTitle>
+                  </CardBody>
+                  <ImgContainer>
+                    <Image
+                      src={`https://spoonacular.com/cdn/ingredients_100x100/${
+                        ingredientItem.image
+                      }`}
+                      alt="Card image cap"
+                    />
+                  </ImgContainer>
+                  <CardBody className="card__body--bottom">
+                    <CardText>{ingredientItem.original}</CardText>
+                  </CardBody>
+                </Card>
+              </div>
+            );
+          })}
     </Row>
   );
 };
@@ -61,7 +63,7 @@ const mapStateToProps = state => {
 
 IngredientCard.propTypes = {
   recipeInfo: PropTypes.shape({
-    extendedIngredients: PropTypes.array.isRequired
+    extendedIngredients: PropTypes.array
   })
 };
 

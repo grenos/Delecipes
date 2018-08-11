@@ -16,7 +16,7 @@ import {
   recipeInput,
   resetState
 } from '../../redux/actions/actions';
-import store from '../../redux/store/configureStore';
+import { store, persistor } from '../../redux/store/configureStore';
 
 //! component style
 import { media } from '../../helpers/mediaQTemplate';
