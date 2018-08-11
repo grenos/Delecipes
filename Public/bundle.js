@@ -39366,10 +39366,17 @@ var AppRouter = function AppRouter() {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _Dashboard2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/recipes/:search?', exact: true, component: _RecipeList2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/recipes/recipe/:id?/:title?', component: _RecipeDetails2.default }),
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/network-error', component: _rateLimit2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/Delecipes/Public', exact: true, component: _Dashboard2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, {
+        path: '/Delecipes/Public/recipes/:search?',
+        exact: true,
+        component: _RecipeList2.default
+      }),
+      _react2.default.createElement(_reactRouterDom.Route, {
+        path: '/Delecipes/Public/recipes/recipe/:id?/:title?',
+        component: _RecipeDetails2.default
+      }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/Delecipes/Public/network-error', component: _rateLimit2.default }),
       _react2.default.createElement(_reactRouterDom.Route, { component: _NotFound2.default })
     )
   );

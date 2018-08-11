@@ -12,10 +12,17 @@ import RateLimit from '../notFound/rateLimit';
 const AppRouter = () => (
   <ConnectedRouter history={history}>
     <Switch>
-      <Route path="/" exact={true} component={Dashboard} />
-      <Route path="/recipes/:search?" exact={true} component={RecipeList} />
-      <Route path="/recipes/recipe/:id?/:title?" component={RecipeDetails} />
-      <Route path="/network-error" component={RateLimit} />
+      <Route path="/Delecipes/Public" exact={true} component={Dashboard} />
+      <Route
+        path="/Delecipes/Public/recipes/:search?"
+        exact={true}
+        component={RecipeList}
+      />
+      <Route
+        path="/Delecipes/Public/recipes/recipe/:id?/:title?"
+        component={RecipeDetails}
+      />
+      <Route path="/Delecipes/Public/network-error" component={RateLimit} />
       <Route component={NotFound} />
     </Switch>
   </ConnectedRouter>
