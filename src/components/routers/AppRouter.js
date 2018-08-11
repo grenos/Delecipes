@@ -7,7 +7,7 @@ import Dashboard from '../dashboard/Dashboard';
 import RecipeList from '../recipeList/RecipeList';
 import RecipeDetails from '../recipeDetails/RecipeDetails';
 import NotFound from '../notFound/NotFound';
-import RateLimit from '../notFound/rateLimit';
+import RateLimit from '../notFound/RateLimit';
 
 const AppRouter = () => (
   <ConnectedRouter history={history}>
