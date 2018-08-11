@@ -26,7 +26,7 @@ const Main = styled.div`
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: url('/dashboard.jpg') no-repeat center center;
+  background: url('dashboard.jpg') no-repeat center center;
   background-size: cover;
 `;
 

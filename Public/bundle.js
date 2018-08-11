@@ -17320,7 +17320,7 @@ var MyNavbar = function MyNavbar() {
         _reactRouterDom.Link,
         { to: '/' },
         _react2.default.createElement('img', {
-          src: '/images/logo.png',
+          src: 'images/logo.png',
           alt: 'logo-brand',
           className: 'navbar__logo'
         })
@@ -41556,7 +41556,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n  height: 100vh;\n  margin: 0;\n  padding: 0;\n  background: url(\'/dashboard.jpg\') no-repeat center center;\n  background-size: cover;\n'], ['\n  height: 100vh;\n  margin: 0;\n  padding: 0;\n  background: url(\'/dashboard.jpg\') no-repeat center center;\n  background-size: cover;\n']),
+var _templateObject = _taggedTemplateLiteral(['\n  height: 100vh;\n  margin: 0;\n  padding: 0;\n  background: url(\'dashboard.jpg\') no-repeat center center;\n  background-size: cover;\n'], ['\n  height: 100vh;\n  margin: 0;\n  padding: 0;\n  background: url(\'dashboard.jpg\') no-repeat center center;\n  background-size: cover;\n']),
     _templateObject2 = _taggedTemplateLiteral(['\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.7);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n'], ['\n  height: 100vh;\n  background: rgba(0, 0, 0, 0.7);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n']),
     _templateObject3 = _taggedTemplateLiteral(['\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n'], ['\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n']);
 
@@ -49837,7 +49837,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  border: 1px solid #eeeeee;\n  border-radius: 0.25em;\n  justify-content: center;\n  background: url(\'/dashboard.jpg\') no-repeat center center;\n  background-size: cover;\n  margin: 1.5em 0 1.5em 0;\n  padding .7em 0;\n'], ['\n  border: 1px solid #eeeeee;\n  border-radius: 0.25em;\n  justify-content: center;\n  background: url(\'/dashboard.jpg\') no-repeat center center;\n  background-size: cover;\n  margin: 1.5em 0 1.5em 0;\n  padding .7em 0;\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  border: 1px solid #eeeeee;\n  border-radius: 0.25em;\n  justify-content: center;\n  background: url(\'dashboard.jpg\') no-repeat center center;\n  background-size: cover;\n  margin: 1.5em 0 1.5em 0;\n  padding .7em 0;\n'], ['\n  border: 1px solid #eeeeee;\n  border-radius: 0.25em;\n  justify-content: center;\n  background: url(\'dashboard.jpg\') no-repeat center center;\n  background-size: cover;\n  margin: 1.5em 0 1.5em 0;\n  padding .7em 0;\n']);
 
 var _react = __webpack_require__(0);
 
