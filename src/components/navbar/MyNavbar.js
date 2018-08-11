@@ -19,7 +19,7 @@ const MyNavbar = () => {
       <Navbar className="navbar" fixed="top">
         <Link to="/">
           <img
-            src="images/logo.png"
+            src="/images/logo.png"
             alt="logo-brand"
             className="navbar__logo"
           />

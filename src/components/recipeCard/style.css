@@ -21,6 +21,10 @@
   color: #212121;
 }
 
+.card__header:hover{
+  cursor: pointer;
+}
+
 .card__header--color:hover {
   background: #3CA55C;
   /* fallback for old browsers */
