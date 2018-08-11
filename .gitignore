@@ -6,9 +6,7 @@
 /coverage
 
 # production
-/build
-Public/bundle.js
-Public/bundle.js.map
+/Puplic
 
 # misc
 .DS_Store
