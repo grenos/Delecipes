@@ -12,7 +12,7 @@ import RateLimit from '../notFound/rateLimit';
 const AppRouter = () => (
   <ConnectedRouter history={history}>
     <Switch>
-      <Route path="/Delecipes/Public" exact={true} component={Dashboard} />
+      <Route path="/Delecipes/Public/" exact={true} component={Dashboard} />
       <Route
         path="/Delecipes/Public/recipes/:search?"
         exact={true}

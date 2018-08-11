@@ -39366,7 +39366,7 @@ var AppRouter = function AppRouter() {
     _react2.default.createElement(
       _reactRouterDom.Switch,
       null,
-      _react2.default.createElement(_reactRouterDom.Route, { path: '/Delecipes/Public', exact: true, component: _Dashboard2.default }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/Delecipes/Public/', exact: true, component: _Dashboard2.default }),
       _react2.default.createElement(_reactRouterDom.Route, {
         path: '/Delecipes/Public/recipes/:search?',
         exact: true,
