@@ -50,7 +50,7 @@ const RateLimit = () => {
             the owner on each network request. For more information and
             resetting your limits please consider contacting the{' '}
             <a href="mailto:vasilis.green@gmail.com">owner</a>
-            ...or just clear your local storage ;)
+            ...or just hit refresh and start over ;)
             <br />
             <BackLink>
               <Link to="/">Back</Link>

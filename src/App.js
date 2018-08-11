@@ -10,10 +10,10 @@ import { persistor, store } from './redux/store/configureStore';
 import '../src/global_styles.css';
 
 // get reactive (live) updates of our state
-store.subscribe(() => {
-  // log the current state
-  console.log(store.getState());
-});
+// store.subscribe(() => {
+//   // log the current state
+//   console.log(store.getState());
+// });
 
 /* give access to all components and their childs to the redux store */
 

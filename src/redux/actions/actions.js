@@ -12,9 +12,9 @@ import axios from 'axios';
 import { RateLimiter } from 'limiter';
 import { push } from 'react-router-redux';
 
-const recipe = new RateLimiter(20, 'day');
-const recipes = new RateLimiter(20, 'day');
-const recipeSum = new RateLimiter(20, 'day');
+const recipe = new RateLimiter(5, 'day');
+const recipes = new RateLimiter(5, 'day');
+const recipeSum = new RateLimiter(5, 'day');
 
 //! get all recipes
 export const searchRecipes = ({
@@ -47,7 +47,6 @@ export const searchRecipes = ({
           }
         )
         .then(res => {
-          console.log(res);
           dispatch(getRecipesData(res));
         })
         .then(() => {
@@ -87,7 +86,6 @@ export const searchRecipeInfo = ({ id, title }) => dispatch => {
           }
         )
         .then(res => {
-          console.log(res);
           dispatch(getRecipeData(res));
         })
         .then(() => {
@@ -127,7 +125,6 @@ export const getRecipeSum = id => dispatch => {
           }
         )
         .then(res => {
-          console.log(res);
           dispatch(getRecipeSummary(res));
         })
         .catch(err => {
