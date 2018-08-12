@@ -18,7 +18,7 @@ import './style.css';
 const Social = props => {
   //
   const { title } = props.recipeInfo;
-  const recipeUrl = `https://grenos.github.io/items/delecipes/${
+  const recipeUrl = `https://delecipes.herokuapp.com/${
     props.locationUrl.pathname
   }`;
 

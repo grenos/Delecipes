@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
-
+import Spinner from '../spinner/Spinner';
 //! Styling
 import './style.css';
-import { media } from '../../helpers/mediaQTemplate';
 import styled from 'styled-components';
 
 const FormCard = styled.div`
@@ -108,6 +108,7 @@ class Search extends Component {
             <Button color="success" type="submit">
               Search
             </Button>
+            {this.props.loading && <Spinner />}
           </FormGroup>
         </Form>
       </FormCard>
@@ -115,4 +116,10 @@ class Search extends Component {
   }
 }
 
-export default Search;
+const mapStateToProps = state => {
+  return {
+    loading: state.apiReducer.loading
+  };
+};
+
+export default connect(mapStateToProps)(Search);

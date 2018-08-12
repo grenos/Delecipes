@@ -101,6 +101,26 @@
   font-size: 1em;
 }
 
+.wines__list__wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 1.5em 0;
+}
+
+.wine__list__titles {
+  font-size: 1.3em;
+  color: #259A35;
+  font-family: 'Alegreya', serif;
+  font-style: italic;
+  margin: .3em;
+}
+
+.wines__text {
+  font-family: inherit;
+}
+
 /* - - - HELPERS - - - */
 
 .make-flex-row {

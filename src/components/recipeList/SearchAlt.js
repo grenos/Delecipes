@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Button, FormGroup, Input, Form } from 'reactstrap';
 
-import { withRouter } from 'react-router-dom';
+import { Button, FormGroup, Input, Form } from 'reactstrap';
 
 import './style.css';
 import styled from 'styled-components';
@@ -90,4 +89,4 @@ class SearchAlt extends Component {
   }
 }
 
-export default withRouter(SearchAlt);
+export default SearchAlt;

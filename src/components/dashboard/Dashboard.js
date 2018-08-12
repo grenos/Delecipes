@@ -19,7 +19,6 @@ import {
 import { store, persistor } from '../../redux/store/configureStore';
 
 //! component style
-import { media } from '../../helpers/mediaQTemplate';
 import styled from 'styled-components';
 
 const Main = styled.div`
