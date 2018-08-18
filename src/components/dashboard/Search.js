@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, FormGroup, Label, Input, Form } from 'reactstrap';
 import Spinner from '../spinner/Spinner';
+
 //! Styling
+import MediaQuery from 'react-responsive';
 import './style.css';
 import styled from 'styled-components';
 
@@ -42,7 +44,8 @@ class Search extends Component {
     this.setState({
       recipeStyle: selectData
     });
-  }; //! Sent values to parent for dispatch to store
+  };
+  //! Sent values to parent for dispatch to store
   onSubmit = e => {
     e.preventDefault();
     this.props.onSubmit({
@@ -54,9 +57,11 @@ class Search extends Component {
     return (
       <FormCard className="form__main">
         <Form onSubmit={this.onSubmit}>
-          <SmallTitle className="form__title">
-            Find the Best Recipes in the world
-          </SmallTitle>
+          <MediaQuery query="(min-width: 376px)">
+            <SmallTitle className="form__title">
+              Find the Best Recipes in the world
+            </SmallTitle>
+          </MediaQuery>
           <FormGroup>
             <Label
               for="search-recipe"
